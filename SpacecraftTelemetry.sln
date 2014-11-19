@@ -1,0 +1,183 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelemetryServer", "TelemetryServer\TelemetryServer.csproj", "{7A469BF6-3F4C-4232-9927-CC910BEC61D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerTest", "ServerTest\ServerTest.csproj", "{84B34BD6-F4EE-44D1-8BCE-5E9E6E037811}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientTest", "ClientTest\ClientTest.csproj", "{13B548B5-4492-401A-85BE-1BE53CD48371}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelemetryRadio", "TelemetryRadio\TelemetryRadio.csproj", "{4F0F609F-26EA-402E-990E-9441AA6E28AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{63864ABB-3A15-4449-9FEA-A2997E95CDFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RawClient", "RawClient\RawClient.csproj", "{A529193D-237E-40F3-B03C-9A0CBD38469B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelemetryClient", "TelemetryClient\TelemetryClient.csproj", "{5DC5AF13-95B0-4DC0-90C0-9793EF2F953A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F4FD4AEA-013A-4A55-B78F-09444ED4C6B0}"
+	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		KSP Debug|Any CPU = KSP Debug|Any CPU
+		KSP Debug|Mixed Platforms = KSP Debug|Mixed Platforms
+		KSP Debug|x86 = KSP Debug|x86
+		KSP Release|Any CPU = KSP Release|Any CPU
+		KSP Release|Mixed Platforms = KSP Release|Mixed Platforms
+		KSP Release|x86 = KSP Release|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7A469BF6-3F4C-4232-9927-CC910BEC61D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A469BF6-3F4C-4232-9927-CC910BEC61D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A469BF6-3F4C-4232-9927-CC910BEC61D3}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{7A469BF6-3F4C-4232-9927-CC910BEC61D3}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{7A469BF6-3F4C-4232-9927-CC910BEC61D3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7A469BF6-3F4C-4232-9927-CC910BEC61D3}.KSP Debug|Any CPU.ActiveCfg = KSP Debug|Any CPU
+		{7A469BF6-3F4C-4232-9927-CC910BEC61D3}.KSP Debug|Any CPU.Build.0 = KSP Debug|Any CPU
+		{7A469BF6-3F4C-4232-9927-CC910BEC61D3}.KSP Debug|Mixed Platforms.ActiveCfg = KSP Debug|Any CPU
+		{7A469BF6-3F4C-4232-9927-CC910BEC61D3}.KSP Debug|Mixed Platforms.Build.0 = KSP Debug|Any CPU
+		{7A469BF6-3F4C-4232-9927-CC910BEC61D3}.KSP Debug|x86.ActiveCfg = KSP Debug|Any CPU
+		{7A469BF6-3F4C-4232-9927-CC910BEC61D3}.KSP Release|Any CPU.ActiveCfg = KSP Release|Any CPU
+		{7A469BF6-3F4C-4232-9927-CC910BEC61D3}.KSP Release|Any CPU.Build.0 = KSP Release|Any CPU
+		{7A469BF6-3F4C-4232-9927-CC910BEC61D3}.KSP Release|Mixed Platforms.ActiveCfg = KSP Release|Any CPU
+		{7A469BF6-3F4C-4232-9927-CC910BEC61D3}.KSP Release|Mixed Platforms.Build.0 = KSP Release|Any CPU
+		{7A469BF6-3F4C-4232-9927-CC910BEC61D3}.KSP Release|x86.ActiveCfg = KSP Release|Any CPU
+		{7A469BF6-3F4C-4232-9927-CC910BEC61D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A469BF6-3F4C-4232-9927-CC910BEC61D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A469BF6-3F4C-4232-9927-CC910BEC61D3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{7A469BF6-3F4C-4232-9927-CC910BEC61D3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{7A469BF6-3F4C-4232-9927-CC910BEC61D3}.Release|x86.ActiveCfg = Release|Any CPU
+		{84B34BD6-F4EE-44D1-8BCE-5E9E6E037811}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{84B34BD6-F4EE-44D1-8BCE-5E9E6E037811}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{84B34BD6-F4EE-44D1-8BCE-5E9E6E037811}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{84B34BD6-F4EE-44D1-8BCE-5E9E6E037811}.Debug|x86.ActiveCfg = Debug|x86
+		{84B34BD6-F4EE-44D1-8BCE-5E9E6E037811}.Debug|x86.Build.0 = Debug|x86
+		{84B34BD6-F4EE-44D1-8BCE-5E9E6E037811}.KSP Debug|Any CPU.ActiveCfg = KSP Debug|x86
+		{84B34BD6-F4EE-44D1-8BCE-5E9E6E037811}.KSP Debug|Mixed Platforms.ActiveCfg = KSP Debug|x86
+		{84B34BD6-F4EE-44D1-8BCE-5E9E6E037811}.KSP Debug|Mixed Platforms.Build.0 = KSP Debug|x86
+		{84B34BD6-F4EE-44D1-8BCE-5E9E6E037811}.KSP Debug|x86.ActiveCfg = KSP Debug|x86
+		{84B34BD6-F4EE-44D1-8BCE-5E9E6E037811}.KSP Debug|x86.Build.0 = KSP Debug|x86
+		{84B34BD6-F4EE-44D1-8BCE-5E9E6E037811}.KSP Release|Any CPU.ActiveCfg = KSP Release|x86
+		{84B34BD6-F4EE-44D1-8BCE-5E9E6E037811}.KSP Release|Mixed Platforms.ActiveCfg = KSP Release|x86
+		{84B34BD6-F4EE-44D1-8BCE-5E9E6E037811}.KSP Release|Mixed Platforms.Build.0 = KSP Release|x86
+		{84B34BD6-F4EE-44D1-8BCE-5E9E6E037811}.KSP Release|x86.ActiveCfg = KSP Release|x86
+		{84B34BD6-F4EE-44D1-8BCE-5E9E6E037811}.KSP Release|x86.Build.0 = KSP Release|x86
+		{84B34BD6-F4EE-44D1-8BCE-5E9E6E037811}.Release|Any CPU.ActiveCfg = Release|x86
+		{84B34BD6-F4EE-44D1-8BCE-5E9E6E037811}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{84B34BD6-F4EE-44D1-8BCE-5E9E6E037811}.Release|Mixed Platforms.Build.0 = Release|x86
+		{84B34BD6-F4EE-44D1-8BCE-5E9E6E037811}.Release|x86.ActiveCfg = Release|x86
+		{84B34BD6-F4EE-44D1-8BCE-5E9E6E037811}.Release|x86.Build.0 = Release|x86
+		{13B548B5-4492-401A-85BE-1BE53CD48371}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{13B548B5-4492-401A-85BE-1BE53CD48371}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{13B548B5-4492-401A-85BE-1BE53CD48371}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{13B548B5-4492-401A-85BE-1BE53CD48371}.Debug|x86.ActiveCfg = Debug|x86
+		{13B548B5-4492-401A-85BE-1BE53CD48371}.Debug|x86.Build.0 = Debug|x86
+		{13B548B5-4492-401A-85BE-1BE53CD48371}.KSP Debug|Any CPU.ActiveCfg = KSP Debug|x86
+		{13B548B5-4492-401A-85BE-1BE53CD48371}.KSP Debug|Mixed Platforms.ActiveCfg = KSP Debug|x86
+		{13B548B5-4492-401A-85BE-1BE53CD48371}.KSP Debug|Mixed Platforms.Build.0 = KSP Debug|x86
+		{13B548B5-4492-401A-85BE-1BE53CD48371}.KSP Debug|x86.ActiveCfg = KSP Debug|x86
+		{13B548B5-4492-401A-85BE-1BE53CD48371}.KSP Debug|x86.Build.0 = KSP Debug|x86
+		{13B548B5-4492-401A-85BE-1BE53CD48371}.KSP Release|Any CPU.ActiveCfg = KSP Release|x86
+		{13B548B5-4492-401A-85BE-1BE53CD48371}.KSP Release|Mixed Platforms.ActiveCfg = KSP Release|x86
+		{13B548B5-4492-401A-85BE-1BE53CD48371}.KSP Release|Mixed Platforms.Build.0 = KSP Release|x86
+		{13B548B5-4492-401A-85BE-1BE53CD48371}.KSP Release|x86.ActiveCfg = KSP Release|x86
+		{13B548B5-4492-401A-85BE-1BE53CD48371}.KSP Release|x86.Build.0 = KSP Release|x86
+		{13B548B5-4492-401A-85BE-1BE53CD48371}.Release|Any CPU.ActiveCfg = Release|x86
+		{13B548B5-4492-401A-85BE-1BE53CD48371}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{13B548B5-4492-401A-85BE-1BE53CD48371}.Release|Mixed Platforms.Build.0 = Release|x86
+		{13B548B5-4492-401A-85BE-1BE53CD48371}.Release|x86.ActiveCfg = Release|x86
+		{13B548B5-4492-401A-85BE-1BE53CD48371}.Release|x86.Build.0 = Release|x86
+		{4F0F609F-26EA-402E-990E-9441AA6E28AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F0F609F-26EA-402E-990E-9441AA6E28AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F0F609F-26EA-402E-990E-9441AA6E28AC}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{4F0F609F-26EA-402E-990E-9441AA6E28AC}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{4F0F609F-26EA-402E-990E-9441AA6E28AC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4F0F609F-26EA-402E-990E-9441AA6E28AC}.KSP Debug|Any CPU.ActiveCfg = KSP Debug|Any CPU
+		{4F0F609F-26EA-402E-990E-9441AA6E28AC}.KSP Debug|Any CPU.Build.0 = KSP Debug|Any CPU
+		{4F0F609F-26EA-402E-990E-9441AA6E28AC}.KSP Debug|Mixed Platforms.ActiveCfg = KSP Debug|Any CPU
+		{4F0F609F-26EA-402E-990E-9441AA6E28AC}.KSP Debug|Mixed Platforms.Build.0 = KSP Debug|Any CPU
+		{4F0F609F-26EA-402E-990E-9441AA6E28AC}.KSP Debug|x86.ActiveCfg = KSP Debug|Any CPU
+		{4F0F609F-26EA-402E-990E-9441AA6E28AC}.KSP Release|Any CPU.ActiveCfg = KSP Release|Any CPU
+		{4F0F609F-26EA-402E-990E-9441AA6E28AC}.KSP Release|Any CPU.Build.0 = KSP Release|Any CPU
+		{4F0F609F-26EA-402E-990E-9441AA6E28AC}.KSP Release|Mixed Platforms.ActiveCfg = KSP Release|Any CPU
+		{4F0F609F-26EA-402E-990E-9441AA6E28AC}.KSP Release|Mixed Platforms.Build.0 = KSP Release|Any CPU
+		{4F0F609F-26EA-402E-990E-9441AA6E28AC}.KSP Release|x86.ActiveCfg = KSP Release|Any CPU
+		{4F0F609F-26EA-402E-990E-9441AA6E28AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F0F609F-26EA-402E-990E-9441AA6E28AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F0F609F-26EA-402E-990E-9441AA6E28AC}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{4F0F609F-26EA-402E-990E-9441AA6E28AC}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{4F0F609F-26EA-402E-990E-9441AA6E28AC}.Release|x86.ActiveCfg = Release|Any CPU
+		{63864ABB-3A15-4449-9FEA-A2997E95CDFE}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{63864ABB-3A15-4449-9FEA-A2997E95CDFE}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{63864ABB-3A15-4449-9FEA-A2997E95CDFE}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{63864ABB-3A15-4449-9FEA-A2997E95CDFE}.Debug|x86.ActiveCfg = Debug|x86
+		{63864ABB-3A15-4449-9FEA-A2997E95CDFE}.Debug|x86.Build.0 = Debug|x86
+		{63864ABB-3A15-4449-9FEA-A2997E95CDFE}.KSP Debug|Any CPU.ActiveCfg = KSP Debug|x86
+		{63864ABB-3A15-4449-9FEA-A2997E95CDFE}.KSP Debug|Mixed Platforms.ActiveCfg = KSP Debug|x86
+		{63864ABB-3A15-4449-9FEA-A2997E95CDFE}.KSP Debug|Mixed Platforms.Build.0 = KSP Debug|x86
+		{63864ABB-3A15-4449-9FEA-A2997E95CDFE}.KSP Debug|x86.ActiveCfg = KSP Debug|x86
+		{63864ABB-3A15-4449-9FEA-A2997E95CDFE}.KSP Debug|x86.Build.0 = KSP Debug|x86
+		{63864ABB-3A15-4449-9FEA-A2997E95CDFE}.KSP Release|Any CPU.ActiveCfg = KSP Release|x86
+		{63864ABB-3A15-4449-9FEA-A2997E95CDFE}.KSP Release|Mixed Platforms.ActiveCfg = KSP Release|x86
+		{63864ABB-3A15-4449-9FEA-A2997E95CDFE}.KSP Release|Mixed Platforms.Build.0 = KSP Release|x86
+		{63864ABB-3A15-4449-9FEA-A2997E95CDFE}.KSP Release|x86.ActiveCfg = KSP Release|x86
+		{63864ABB-3A15-4449-9FEA-A2997E95CDFE}.KSP Release|x86.Build.0 = KSP Release|x86
+		{63864ABB-3A15-4449-9FEA-A2997E95CDFE}.Release|Any CPU.ActiveCfg = Release|x86
+		{63864ABB-3A15-4449-9FEA-A2997E95CDFE}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{63864ABB-3A15-4449-9FEA-A2997E95CDFE}.Release|Mixed Platforms.Build.0 = Release|x86
+		{63864ABB-3A15-4449-9FEA-A2997E95CDFE}.Release|x86.ActiveCfg = Release|x86
+		{63864ABB-3A15-4449-9FEA-A2997E95CDFE}.Release|x86.Build.0 = Release|x86
+		{A529193D-237E-40F3-B03C-9A0CBD38469B}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{A529193D-237E-40F3-B03C-9A0CBD38469B}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{A529193D-237E-40F3-B03C-9A0CBD38469B}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{A529193D-237E-40F3-B03C-9A0CBD38469B}.Debug|x86.ActiveCfg = Debug|x86
+		{A529193D-237E-40F3-B03C-9A0CBD38469B}.Debug|x86.Build.0 = Debug|x86
+		{A529193D-237E-40F3-B03C-9A0CBD38469B}.KSP Debug|Any CPU.ActiveCfg = Debug|x86
+		{A529193D-237E-40F3-B03C-9A0CBD38469B}.KSP Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{A529193D-237E-40F3-B03C-9A0CBD38469B}.KSP Debug|Mixed Platforms.Build.0 = Debug|x86
+		{A529193D-237E-40F3-B03C-9A0CBD38469B}.KSP Debug|x86.ActiveCfg = Debug|x86
+		{A529193D-237E-40F3-B03C-9A0CBD38469B}.KSP Debug|x86.Build.0 = Debug|x86
+		{A529193D-237E-40F3-B03C-9A0CBD38469B}.KSP Release|Any CPU.ActiveCfg = Release|x86
+		{A529193D-237E-40F3-B03C-9A0CBD38469B}.KSP Release|Mixed Platforms.ActiveCfg = Release|x86
+		{A529193D-237E-40F3-B03C-9A0CBD38469B}.KSP Release|Mixed Platforms.Build.0 = Release|x86
+		{A529193D-237E-40F3-B03C-9A0CBD38469B}.KSP Release|x86.ActiveCfg = Release|x86
+		{A529193D-237E-40F3-B03C-9A0CBD38469B}.KSP Release|x86.Build.0 = Release|x86
+		{A529193D-237E-40F3-B03C-9A0CBD38469B}.Release|Any CPU.ActiveCfg = Release|x86
+		{A529193D-237E-40F3-B03C-9A0CBD38469B}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{A529193D-237E-40F3-B03C-9A0CBD38469B}.Release|Mixed Platforms.Build.0 = Release|x86
+		{A529193D-237E-40F3-B03C-9A0CBD38469B}.Release|x86.ActiveCfg = Release|x86
+		{A529193D-237E-40F3-B03C-9A0CBD38469B}.Release|x86.Build.0 = Release|x86
+		{5DC5AF13-95B0-4DC0-90C0-9793EF2F953A}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{5DC5AF13-95B0-4DC0-90C0-9793EF2F953A}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{5DC5AF13-95B0-4DC0-90C0-9793EF2F953A}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{5DC5AF13-95B0-4DC0-90C0-9793EF2F953A}.Debug|x86.ActiveCfg = Debug|x86
+		{5DC5AF13-95B0-4DC0-90C0-9793EF2F953A}.Debug|x86.Build.0 = Debug|x86
+		{5DC5AF13-95B0-4DC0-90C0-9793EF2F953A}.KSP Debug|Any CPU.ActiveCfg = Debug|x86
+		{5DC5AF13-95B0-4DC0-90C0-9793EF2F953A}.KSP Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{5DC5AF13-95B0-4DC0-90C0-9793EF2F953A}.KSP Debug|Mixed Platforms.Build.0 = Debug|x86
+		{5DC5AF13-95B0-4DC0-90C0-9793EF2F953A}.KSP Debug|x86.ActiveCfg = Debug|x86
+		{5DC5AF13-95B0-4DC0-90C0-9793EF2F953A}.KSP Debug|x86.Build.0 = Debug|x86
+		{5DC5AF13-95B0-4DC0-90C0-9793EF2F953A}.KSP Release|Any CPU.ActiveCfg = Release|x86
+		{5DC5AF13-95B0-4DC0-90C0-9793EF2F953A}.KSP Release|Mixed Platforms.ActiveCfg = Release|x86
+		{5DC5AF13-95B0-4DC0-90C0-9793EF2F953A}.KSP Release|Mixed Platforms.Build.0 = Release|x86
+		{5DC5AF13-95B0-4DC0-90C0-9793EF2F953A}.KSP Release|x86.ActiveCfg = Release|x86
+		{5DC5AF13-95B0-4DC0-90C0-9793EF2F953A}.KSP Release|x86.Build.0 = Release|x86
+		{5DC5AF13-95B0-4DC0-90C0-9793EF2F953A}.Release|Any CPU.ActiveCfg = Release|x86
+		{5DC5AF13-95B0-4DC0-90C0-9793EF2F953A}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{5DC5AF13-95B0-4DC0-90C0-9793EF2F953A}.Release|Mixed Platforms.Build.0 = Release|x86
+		{5DC5AF13-95B0-4DC0-90C0-9793EF2F953A}.Release|x86.ActiveCfg = Release|x86
+		{5DC5AF13-95B0-4DC0-90C0-9793EF2F953A}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5DC5AF13-95B0-4DC0-90C0-9793EF2F953A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TelemetryClient</RootNamespace>
+    <AssemblyName>TelemetryClient</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GSLib">
+      <HintPath>..\..\GTSLib\GTSLib\bin\Debug\GSLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmBooster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBooster.Designer.cs">
+      <DependentUpon>frmBooster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCapcom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCapcom.Designer.cs">
+      <DependentUpon>frmCapcom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmControl.Designer.cs">
+      <DependentUpon>frmControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmControlTerminal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmControlTerminal.Designer.cs">
+      <DependentUpon>frmControlTerminal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEECOM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEECOM.Designer.cs">
+      <DependentUpon>frmEECOM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFAO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFAO.Designer.cs">
+      <DependentUpon>frmFAO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFDO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFDO.Designer.cs">
+      <DependentUpon>frmFDO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFlightDirector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFlightDirector.Designer.cs">
+      <DependentUpon>frmFlightDirector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGNC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGNC.Designer.cs">
+      <DependentUpon>frmGNC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGuido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGuido.Designer.cs">
+      <DependentUpon>frmGuido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInco.Designer.cs">
+      <DependentUpon>frmInco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNetwork.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNetwork.Designer.cs">
+      <DependentUpon>frmNetwork.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmProcedures.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProcedures.Designer.cs">
+      <DependentUpon>frmProcedures.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRetro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRetro.Designer.cs">
+      <DependentUpon>frmRetro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSurgeon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSurgeon.Designer.cs">
+      <DependentUpon>frmSurgeon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTelmu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTelmu.Designer.cs">
+      <DependentUpon>frmTelmu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KerbalTimespan.cs" />
+    <Compile Include="SetResetButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SetResetButton.Designer.cs">
+      <DependentUpon>SetResetButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmBooster.resx">
+      <DependentUpon>frmBooster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCapcom.resx">
+      <DependentUpon>frmCapcom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmControl.resx">
+      <DependentUpon>frmControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmControlTerminal.resx">
+      <DependentUpon>frmControlTerminal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEECOM.resx">
+      <DependentUpon>frmEECOM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFAO.resx">
+      <DependentUpon>frmFAO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFDO.resx">
+      <DependentUpon>frmFDO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFlightDirector.resx">
+      <DependentUpon>frmFlightDirector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGNC.resx">
+      <DependentUpon>frmGNC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGuido.resx">
+      <DependentUpon>frmGuido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInco.resx">
+      <DependentUpon>frmInco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNetwork.resx">
+      <DependentUpon>frmNetwork.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProcedures.resx">
+      <DependentUpon>frmProcedures.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRetro.resx">
+      <DependentUpon>frmRetro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSurgeon.resx">
+      <DependentUpon>frmSurgeon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTelmu.resx">
+      <DependentUpon>frmTelmu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SetResetButton.resx">
+      <DependentUpon>SetResetButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TelemetryServer\TelemetryServer.csproj">
+      <Project>{7A469BF6-3F4C-4232-9927-CC910BEC61D3}</Project>
+      <Name>TelemetryServer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
