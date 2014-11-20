@@ -5,8 +5,9 @@ using System.Text;
 
 namespace TelemetryClient
 {
-    struct KerbalTimespan
+    public struct KerbalTimespan
     {
+        public bool Positive { get; private set; }
         public int Days { get; private set; }
         public int Hours { get; private set; }
         public int Minutes { get; private set; }
@@ -15,7 +16,9 @@ namespace TelemetryClient
         public KerbalTimespan(double seconds)
             : this()
         {
-            int sec = (int)seconds;
+            Positive = seconds >= 0;
+
+            int sec = (int)Math.Abs(seconds);
             Days = sec / 21600;
             Hours = (sec - (Days * 21600)) / 3600;
             Minutes = (sec - (Days * 21600) - (Hours * 3600)) / 60;
@@ -24,7 +27,7 @@ namespace TelemetryClient
 
         public override string ToString()
         {
-            return String.Format("{0}:{1}:{2:D2}:{3:D2}", Days, Hours, Minutes, Seconds);
+            return String.Format("{0}{1}:{2}:{3:D2}:{4:D2}", Positive ? "+" : "-", Days, Hours, Minutes, Seconds);
         }
     }
 }

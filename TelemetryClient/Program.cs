@@ -22,6 +22,11 @@ namespace TelemetryClient
 
     static class Program
     {
+        public static CraftConfig cfg = null;
+        
+        public static double countdownTime;
+        public static bool runCountdown;
+
         public static TelemetryData data;
         public static Dictionary<frmControlTerminal, CheckTristate> stationsGo;
         static TcpClient client;
@@ -72,6 +77,8 @@ namespace TelemetryClient
 
             t = new Thread(new ThreadStart(CollectData));
             t.Start();
+
+            countdownTime = 0;
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

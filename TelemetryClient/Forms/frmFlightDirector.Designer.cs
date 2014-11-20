@@ -45,13 +45,13 @@
             this.lblRetro = new System.Windows.Forms.Label();
             this.lblBooster = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnCountdownStart = new System.Windows.Forms.Button();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.btnCountdownHold = new System.Windows.Forms.Button();
             this.btnCountdownReset = new System.Windows.Forms.Button();
+            this.btnCountdownHold = new System.Windows.Forms.Button();
+            this.btnCountdownStart = new System.Windows.Forms.Button();
+            this.nudTime = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTime)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTerminal
@@ -252,51 +252,13 @@
             this.groupBox2.Controls.Add(this.btnCountdownReset);
             this.groupBox2.Controls.Add(this.btnCountdownHold);
             this.groupBox2.Controls.Add(this.btnCountdownStart);
-            this.groupBox2.Controls.Add(this.numericUpDown1);
+            this.groupBox2.Controls.Add(this.nudTime);
             this.groupBox2.Location = new System.Drawing.Point(769, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(231, 85);
             this.groupBox2.TabIndex = 23;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "COUNTDOWN TIMER";
-            // 
-            // btnCountdownStart
-            // 
-            this.btnCountdownStart.Location = new System.Drawing.Point(76, 24);
-            this.btnCountdownStart.Name = "btnCountdownStart";
-            this.btnCountdownStart.Size = new System.Drawing.Size(46, 44);
-            this.btnCountdownStart.TabIndex = 36;
-            this.btnCountdownStart.Text = "Start";
-            this.btnCountdownStart.UseVisualStyleBackColor = true;
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.BackColor = System.Drawing.Color.Black;
-            this.numericUpDown1.Font = new System.Drawing.Font("Digital-7", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.ForeColor = System.Drawing.Color.Red;
-            this.numericUpDown1.Location = new System.Drawing.Point(6, 24);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            120,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(64, 44);
-            this.numericUpDown1.TabIndex = 22;
-            this.numericUpDown1.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            // 
-            // btnCountdownHold
-            // 
-            this.btnCountdownHold.Location = new System.Drawing.Point(128, 24);
-            this.btnCountdownHold.Name = "btnCountdownHold";
-            this.btnCountdownHold.Size = new System.Drawing.Size(46, 44);
-            this.btnCountdownHold.TabIndex = 37;
-            this.btnCountdownHold.Text = "Hold";
-            this.btnCountdownHold.UseVisualStyleBackColor = true;
             // 
             // btnCountdownReset
             // 
@@ -306,6 +268,47 @@
             this.btnCountdownReset.TabIndex = 38;
             this.btnCountdownReset.Text = "Reset";
             this.btnCountdownReset.UseVisualStyleBackColor = true;
+            this.btnCountdownReset.Click += new System.EventHandler(this.btnCountdownReset_Click);
+            // 
+            // btnCountdownHold
+            // 
+            this.btnCountdownHold.Location = new System.Drawing.Point(128, 24);
+            this.btnCountdownHold.Name = "btnCountdownHold";
+            this.btnCountdownHold.Size = new System.Drawing.Size(46, 44);
+            this.btnCountdownHold.TabIndex = 37;
+            this.btnCountdownHold.Text = "Hold";
+            this.btnCountdownHold.UseVisualStyleBackColor = true;
+            this.btnCountdownHold.Click += new System.EventHandler(this.btnCountdownHold_Click);
+            // 
+            // btnCountdownStart
+            // 
+            this.btnCountdownStart.Location = new System.Drawing.Point(76, 24);
+            this.btnCountdownStart.Name = "btnCountdownStart";
+            this.btnCountdownStart.Size = new System.Drawing.Size(46, 44);
+            this.btnCountdownStart.TabIndex = 36;
+            this.btnCountdownStart.Text = "Start";
+            this.btnCountdownStart.UseVisualStyleBackColor = true;
+            this.btnCountdownStart.Click += new System.EventHandler(this.btnCountdownStart_Click);
+            // 
+            // nudTime
+            // 
+            this.nudTime.BackColor = System.Drawing.Color.Black;
+            this.nudTime.Font = new System.Drawing.Font("Digital-7", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudTime.ForeColor = System.Drawing.Color.Red;
+            this.nudTime.Location = new System.Drawing.Point(6, 24);
+            this.nudTime.Maximum = new decimal(new int[] {
+            120,
+            0,
+            0,
+            0});
+            this.nudTime.Name = "nudTime";
+            this.nudTime.Size = new System.Drawing.Size(64, 44);
+            this.nudTime.TabIndex = 22;
+            this.nudTime.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             // 
             // frmFlightDirector
             // 
@@ -320,7 +323,7 @@
             this.Controls.SetChildIndex(this.groupBox2, 0);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTime)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -346,7 +349,7 @@
         private System.Windows.Forms.Label lblBooster;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnCountdownStart;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown nudTime;
         private System.Windows.Forms.Button btnCountdownHold;
         private System.Windows.Forms.Button btnCountdownReset;
 

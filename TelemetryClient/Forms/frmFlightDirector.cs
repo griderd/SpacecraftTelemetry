@@ -10,8 +10,6 @@ namespace TelemetryClient
 {
     public partial class frmFlightDirector : TelemetryClient.frmControlTerminal
     {
-        StringBuilder terminal = new StringBuilder();
-
         public frmFlightDirector()
         {
             InitializeComponent();
@@ -38,6 +36,9 @@ namespace TelemetryClient
             AppendToTerminal("Pitch", Program.data.pitch);
             AppendToTerminal("Roll", Program.data.roll);
             AppendToTerminal("Heading", Program.data.heading);
+
+            if ((Program.runCountdown) & (Program.countdownTime <= 0))
+                Program.countdownTime += 0.1;
         }
 
         void UpdateLights()
@@ -97,6 +98,23 @@ namespace TelemetryClient
             if (Program.stationsGo[Program.control] == CheckTristate.Go) lblControl.BackColor = Color.Lime;
             else if (Program.stationsGo[Program.control] == CheckTristate.NoGo) lblControl.BackColor = Color.Red;
             else lblControl.BackColor = Color.FromArgb(64, 64, 0);
+        }
+
+        private void btnCountdownStart_Click(object sender, EventArgs e)
+        {
+            Program.runCountdown = true;
+            Program.countdownTime = (double)nudTime.Value * -60;
+        }
+
+        private void btnCountdownHold_Click(object sender, EventArgs e)
+        {
+            if (Program.countdownTime < 0)
+                Program.runCountdown = !Program.runCountdown;
+        }
+
+        private void btnCountdownReset_Click(object sender, EventArgs e)
+        {
+            Program.countdownTime = 1;
         }
     }
 }

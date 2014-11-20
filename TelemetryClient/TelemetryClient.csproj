@@ -51,108 +51,110 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmBooster.cs">
+    <Compile Include="CraftConfig.cs" />
+    <Compile Include="Forms\frmBooster.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmBooster.Designer.cs">
+    <Compile Include="Forms\frmBooster.Designer.cs">
       <DependentUpon>frmBooster.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCapcom.cs">
+    <Compile Include="Forms\frmCapcom.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCapcom.Designer.cs">
+    <Compile Include="Forms\frmCapcom.Designer.cs">
       <DependentUpon>frmCapcom.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmControl.cs">
+    <Compile Include="Forms\frmControl.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmControl.Designer.cs">
+    <Compile Include="Forms\frmControl.Designer.cs">
       <DependentUpon>frmControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmControlTerminal.cs">
+    <Compile Include="Forms\frmControlTerminal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmControlTerminal.Designer.cs">
+    <Compile Include="Forms\frmControlTerminal.Designer.cs">
       <DependentUpon>frmControlTerminal.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmEECOM.cs">
+    <Compile Include="Forms\frmEECOM.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmEECOM.Designer.cs">
+    <Compile Include="Forms\frmEECOM.Designer.cs">
       <DependentUpon>frmEECOM.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmFAO.cs">
+    <Compile Include="Forms\frmFAO.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmFAO.Designer.cs">
+    <Compile Include="Forms\frmFAO.Designer.cs">
       <DependentUpon>frmFAO.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmFDO.cs">
+    <Compile Include="Forms\frmFDO.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmFDO.Designer.cs">
+    <Compile Include="Forms\frmFDO.Designer.cs">
       <DependentUpon>frmFDO.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmFlightDirector.cs">
+    <Compile Include="Forms\frmFlightDirector.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmFlightDirector.Designer.cs">
+    <Compile Include="Forms\frmFlightDirector.Designer.cs">
       <DependentUpon>frmFlightDirector.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmGNC.cs">
+    <Compile Include="Forms\frmGNC.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmGNC.Designer.cs">
+    <Compile Include="Forms\frmGNC.Designer.cs">
       <DependentUpon>frmGNC.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmGuido.cs">
+    <Compile Include="Forms\frmGuido.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmGuido.Designer.cs">
+    <Compile Include="Forms\frmGuido.Designer.cs">
       <DependentUpon>frmGuido.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmInco.cs">
+    <Compile Include="Forms\frmInco.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmInco.Designer.cs">
+    <Compile Include="Forms\frmInco.Designer.cs">
       <DependentUpon>frmInco.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMain.cs">
+    <Compile Include="Forms\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMain.Designer.cs">
+    <Compile Include="Forms\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmNetwork.cs">
+    <Compile Include="Forms\frmNetwork.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmNetwork.Designer.cs">
+    <Compile Include="Forms\frmNetwork.Designer.cs">
       <DependentUpon>frmNetwork.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmProcedures.cs">
+    <Compile Include="Forms\frmProcedures.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmProcedures.Designer.cs">
+    <Compile Include="Forms\frmProcedures.Designer.cs">
       <DependentUpon>frmProcedures.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmRetro.cs">
+    <Compile Include="Forms\frmRetro.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmRetro.Designer.cs">
+    <Compile Include="Forms\frmRetro.Designer.cs">
       <DependentUpon>frmRetro.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmSurgeon.cs">
+    <Compile Include="Forms\frmSurgeon.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSurgeon.Designer.cs">
+    <Compile Include="Forms\frmSurgeon.Designer.cs">
       <DependentUpon>frmSurgeon.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmTelmu.cs">
+    <Compile Include="Forms\frmTelmu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTelmu.Designer.cs">
+    <Compile Include="Forms\frmTelmu.Designer.cs">
       <DependentUpon>frmTelmu.cs</DependentUpon>
     </Compile>
+    <Compile Include="KerbalDateTime.cs" />
     <Compile Include="KerbalTimespan.cs" />
     <Compile Include="SetResetButton.cs">
       <SubType>UserControl</SubType>
@@ -162,55 +164,55 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmBooster.resx">
+    <EmbeddedResource Include="Forms\frmBooster.resx">
       <DependentUpon>frmBooster.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCapcom.resx">
+    <EmbeddedResource Include="Forms\frmCapcom.resx">
       <DependentUpon>frmCapcom.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmControl.resx">
+    <EmbeddedResource Include="Forms\frmControl.resx">
       <DependentUpon>frmControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmControlTerminal.resx">
+    <EmbeddedResource Include="Forms\frmControlTerminal.resx">
       <DependentUpon>frmControlTerminal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmEECOM.resx">
+    <EmbeddedResource Include="Forms\frmEECOM.resx">
       <DependentUpon>frmEECOM.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmFAO.resx">
+    <EmbeddedResource Include="Forms\frmFAO.resx">
       <DependentUpon>frmFAO.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmFDO.resx">
+    <EmbeddedResource Include="Forms\frmFDO.resx">
       <DependentUpon>frmFDO.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmFlightDirector.resx">
+    <EmbeddedResource Include="Forms\frmFlightDirector.resx">
       <DependentUpon>frmFlightDirector.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmGNC.resx">
+    <EmbeddedResource Include="Forms\frmGNC.resx">
       <DependentUpon>frmGNC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmGuido.resx">
+    <EmbeddedResource Include="Forms\frmGuido.resx">
       <DependentUpon>frmGuido.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmInco.resx">
+    <EmbeddedResource Include="Forms\frmInco.resx">
       <DependentUpon>frmInco.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMain.resx">
+    <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmNetwork.resx">
+    <EmbeddedResource Include="Forms\frmNetwork.resx">
       <DependentUpon>frmNetwork.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmProcedures.resx">
+    <EmbeddedResource Include="Forms\frmProcedures.resx">
       <DependentUpon>frmProcedures.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmRetro.resx">
+    <EmbeddedResource Include="Forms\frmRetro.resx">
       <DependentUpon>frmRetro.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSurgeon.resx">
+    <EmbeddedResource Include="Forms\frmSurgeon.resx">
       <DependentUpon>frmSurgeon.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTelmu.resx">
+    <EmbeddedResource Include="Forms\frmTelmu.resx">
       <DependentUpon>frmTelmu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SetResetButton.resx">

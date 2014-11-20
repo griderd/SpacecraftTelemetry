@@ -70,7 +70,7 @@ namespace TelemetryRadio
 
         public TelemetryData GetTelemetryData()
         {
-#if KSP_DEBUG
+#if DEBUG
             TelemetryRadioLogger.Print("Translating telemetry data.");
 #endif
             return new TelemetryData
@@ -107,7 +107,8 @@ namespace TelemetryRadio
                 altitude = Altitude,
                 vesselName = VesselName,
                 partResources = this.partResources,
-                totalResources = new List<ResourceInfo>(this.totalResources.Values.ToArray())
+                totalResources = new List<ResourceInfo>(this.totalResources.Values.ToArray()),
+                universalTime = UniversalTime
             };
         }
 
@@ -128,7 +129,7 @@ namespace TelemetryRadio
 
         void UpdateCrew()
         {
-#if KSP_DEBUG
+#if DEBUG
             TelemetryRadioLogger.Print("Updating crew data.");
 #endif
             crew = vessel.GetVesselCrew().ToArray();
@@ -147,7 +148,7 @@ namespace TelemetryRadio
 
         void UpdateEngines()
         {
-#if KSP_DEBUG
+#if DEBUG
             TelemetryRadioLogger.Print("Updating engine data.");
 #endif
             currentThrust = new List<double>();
@@ -182,7 +183,7 @@ namespace TelemetryRadio
 
         void UpdateOrientation()
         {
-#if KSP_DEBUG
+#if DEBUG
             TelemetryRadioLogger.Print("Updating vessel orientation data.");
 #endif
             Vector3 CoM = vessel.findWorldCenterOfMass();
@@ -193,7 +194,7 @@ namespace TelemetryRadio
             rotationVesselSurface = Quaternion.Inverse(Quaternion.Euler(90, 0, 0) * Quaternion.Inverse(vessel.GetTransform().rotation) * rotationSurface);
 
             heading = rotationVesselSurface.eulerAngles.y;
-            pitch = (rotationVesselSurface.eulerAngles.y > 180) ? (360.0 - rotationVesselSurface.eulerAngles.x) : -rotationVesselSurface.eulerAngles.x;
+            pitch = (rotationVesselSurface.eulerAngles.x > 180) ? (360.0 - rotationVesselSurface.eulerAngles.x) : -rotationVesselSurface.eulerAngles.x;
             roll = (rotationVesselSurface.eulerAngles.z > 180) ? (rotationVesselSurface.eulerAngles.z - 360.0) : rotationVesselSurface.eulerAngles.z;
         }
 
@@ -218,7 +219,7 @@ namespace TelemetryRadio
 
         void UpdateResources()
         {
-#if KSP_DEBUG
+#if DEBUG
             TelemetryRadioLogger.Print("Updating resources data.");
 #endif
             partResources.Clear();

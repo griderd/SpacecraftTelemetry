@@ -42,7 +42,7 @@ namespace TelemetryServer
         public double longitude, latitude;
         public double acceleration, angularMomentum, angularVelocity, orbitalVelocity, surfaceVelocity;
         public double atmosphericDensity, geeForce, heightFromTerrain, missionTime, orbitSpeed,
-            surfaceSpeed, staticPressure, verticalSpeed, terrainAltitude, altitude;
+            surfaceSpeed, staticPressure, verticalSpeed, terrainAltitude, altitude, universalTime;
         public string vesselName;
         public int currentStage;
 

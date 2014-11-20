@@ -65,8 +65,13 @@ namespace TelemetryClient
 
         private void tmrUpdate_Tick(object sender, EventArgs e)
         {
-            double missionTimeSeconds = Program.data.missionTime;
-            KerbalTimespan missionTime = new KerbalTimespan(Program.data.missionTime);
+            KerbalTimespan missionTime;
+            if (Program.countdownTime < 0)
+                missionTime = new KerbalTimespan(Program.countdownTime);
+            else
+                missionTime = new KerbalTimespan(Program.data.missionTime);
+
+            lblMissionTime.Text = missionTime.ToString();
 
             UpdateScreen();
             UpdateTerminal();
@@ -102,6 +107,42 @@ namespace TelemetryClient
             terminal.Append(label);
             terminal.Append(": ");
             terminal.AppendLine(value.ToString("F2"));
+        }
+
+        protected string GenerateScale(double percentage)
+        {
+            StringBuilder scale = new StringBuilder();
+
+            double perc = Math.Round(percentage, 2);
+
+            int bars = (int)Math.Round(perc / 5.0);
+            double partial = perc - (bars * 5);
+            bool includePartial = (partial > 2) & (partial < 3);
+
+            scale.Append('[');
+            scale.Append(new string('\u2588', bars));
+            if (includePartial) scale.Append('\u258C');
+            scale.Append(new string(' ', 20 - bars - (includePartial ? 1 : 0)));
+            scale.Append(']');
+
+            return scale.ToString();
+        }
+
+        protected void AppendResource(string resourceName, string alias)
+        {
+            double amount = Program.GetResourceInfo(resourceName).currentAmount;
+            double max = Program.GetResourceInfo(resourceName).maxAmount;
+            double percent = max > 0.0 ? amount / max : 0.0;
+
+            terminal.Append(alias);
+            terminal.Append(": ");
+            terminal.Append(amount.ToString("F2"));
+            terminal.Append('/');
+            terminal.Append(max.ToString("F2"));
+            terminal.Append(" (");
+            terminal.Append(percent.ToString("P"));
+            terminal.AppendLine(")");
+            terminal.AppendLine(GenerateScale(percent * 100));
         }
     }
 }

@@ -10,8 +10,6 @@ namespace TelemetryClient
 {
     public partial class frmBooster : TelemetryClient.frmControlTerminal
     {
-        StringBuilder terminal = new StringBuilder();
-
         double initialVelocity;
 
         public frmBooster()
@@ -45,6 +43,14 @@ namespace TelemetryClient
             AppendToTerminal("Orbital Velocity", Program.data.orbitalVelocity);
             AppendToTerminal("ΔV", deltaVelocity);
             AppendToTerminal("Altitude", Program.data.altitude);
+
+            if (Program.cfg != null)
+            {
+                foreach (string resource in Program.cfg.Stages[Program.data.currentStage].Fuels)
+                {
+                    AppendResource(resource, resource);
+                }
+            }
         }
 
         private void frmBooster_Load(object sender, EventArgs e)

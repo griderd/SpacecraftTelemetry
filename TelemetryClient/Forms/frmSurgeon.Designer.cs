@@ -33,7 +33,7 @@
             // frmSurgeon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(636, 558);
+            this.ClientSize = new System.Drawing.Size(536, 570);
             this.Name = "frmSurgeon";
             this.Text = "Flight Surgeon";
             this.ResumeLayout(false);

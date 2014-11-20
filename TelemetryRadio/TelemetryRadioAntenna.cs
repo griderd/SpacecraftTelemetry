@@ -39,6 +39,8 @@ namespace TelemetryRadio
                 return;
             }
 
+            LinkupToFlightEvents();
+
             lastTime = Time.timeSinceLevelLoad;
 
             TelemetryRadioLogger.Print("Initializing server at " + ipAddress + ":" + port.ToString());
@@ -102,15 +104,32 @@ namespace TelemetryRadio
             }
         }
 
-        // Hopefully this gets called at some point
-        void OnDestroy()
+        void onPartDestroyed(Part part)
         {
-            // Stop the server
-            if (telemetryServer != null)
+            if (part == this.part)
             {
-                TelemetryRadioLogger.Print("Stopping the server.");
-                telemetryServer.StopServer();
+                // Stop the server
+                if (telemetryServer != null)
+                {
+                    TelemetryRadioLogger.Print("Stopping the server.");
+                    telemetryServer.StopServer();
+                }
             }
+        }
+
+        void onPartJointBreak(PartJoint joint)
+        {
+            if (joint.Child == this.part)
+            {
+                onPartDestroyed(part);
+            }
+        }
+
+        void LinkupToFlightEvents()
+        {
+            GameEvents.onPartDestroyed.Add(new EventData<Part>.OnEvent(onPartDestroyed));
+            GameEvents.onPartDie.Add(new EventData<Part>.OnEvent(onPartDestroyed));
+            GameEvents.onPartJointBreak.Add(new EventData<PartJoint>.OnEvent(onPartJointBreak));
         }
     }
 }
