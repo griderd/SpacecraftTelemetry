@@ -23,7 +23,7 @@ namespace TelemetryClient
 
             int bars = (int)(perc / 5.0);
             scale.Append('[');
-            scale.Append(new string('|', bars));
+            scale.Append(new string('\u2592', bars));
             scale.Append(new string(' ', 20 - bars));
             scale.Append(']');
 
@@ -55,7 +55,7 @@ namespace TelemetryClient
             terminal.AppendLine();
             AppendResource("Hydrogen", "Hydrogen");
             terminal.AppendLine();
-            AppendResource("Carbon Dioxide", "CarbonDioxide");
+            AppendResource("CarbonDioxide", "Carbon Dioxide");
             terminal.AppendLine();
             AppendResource("Food", "Food");
         }
