@@ -81,6 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataProcessor.cs" />
+    <Compile Include="RawDataProtocol.cs" />
     <Compile Include="RemoteTechCompatibility.cs" />
     <Compile Include="TelemetryRadioAntenna.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

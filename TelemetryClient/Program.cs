@@ -32,10 +32,12 @@ namespace TelemetryClient
         static TcpClient client;
 
         public static bool Connected { get { return client.Connected; } }
+        public static bool listening;
+        public static bool tryToConnect;
+
+        public static IPEndPoint ServerAddress { get; set; }
 
         static Thread t;
-
-        public static bool listening;
 
         public static frmBooster booster;
         public static frmFlightDirector flight;
@@ -72,8 +74,11 @@ namespace TelemetryClient
         [STAThread]
         static void Main()
         {
+            ServerAddress = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8080);
+
             stationsGo = new Dictionary<frmControlTerminal, CheckTristate>();
             listening = false;
+            tryToConnect = false;
 
             t = new Thread(new ThreadStart(CollectData));
             t.Start();
@@ -147,35 +152,49 @@ namespace TelemetryClient
             stationsGo[source] = value;
         }
 
+        public static void BeginCollectData()
+        {
+            t = new Thread(new ThreadStart(CollectData));
+            t.Start();
+        }
+
+        public static void EndCollectData()
+        {
+            listening = false;
+            tryToConnect = false;
+        }
+
         static void CollectData()
         {
             Trace.WriteLine("Beginning data collection.");
-            for (; ; )
+            tryToConnect = true;
+            while (tryToConnect)
             {
-                Trace.WriteLine("Waiting to connect to 127.0.0.1:8080");
-                while (!Connect("127.0.0.1", 8080, true)) { }
-                ListenForData();
+                Trace.WriteLine("Waiting to connect to " + ServerAddress.ToString());
+                while (!Connect() & tryToConnect) { }
+                tryToConnect = false;
+                if (client.Connected) ListenForData();
             }
         }
 
-        static bool Connect(string ipAddress, int port, bool writeAttempt)
+        static bool Connect()
         {
             client = new TcpClient();
-            IPEndPoint serverAddress = new IPEndPoint(IPAddress.Parse(ipAddress), port);
-            if (writeAttempt) Trace.Write("Trying to connect to " + serverAddress.ToString() + "... ");
+
             try
             {
-                client.Connect(serverAddress);
+                client.Connect(ServerAddress);
             }
             catch
             {
                 return false;
             }
 
-            while (!client.Connected) { }
-            Trace.WriteLine("Connected");
 
-            Trace.WriteLine("Client listening on: " + client.Client.LocalEndPoint.ToString());
+            while (!client.Connected & tryToConnect) { }
+            //Trace.WriteLine("Connected");
+
+            //Trace.WriteLine("Client listening on: " + client.Client.LocalEndPoint.ToString());
             return true;
         }
 
@@ -214,11 +233,15 @@ namespace TelemetryClient
                     data = TelemetryData.Deserialize(rawData.ToArray());
                     rawData.Clear();
                 }
-                catch (IOException)
+                catch
                 {
                     break;
                 }
             }
+
+            listening = false;
+            client.GetStream().Close();
+            client.Close();
         }
     }
 }
