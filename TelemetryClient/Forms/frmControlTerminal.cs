@@ -117,7 +117,7 @@ namespace TelemetryClient
 
             int bars = (int)Math.Round(perc / 5.0);
             double partial = perc - (bars * 5);
-            bool includePartial = (partial > 2) & (partial < 3);
+            bool includePartial = (partial > 0) & (partial < 5);
 
             scale.Append('[');
             scale.Append(new string('\u2588', bars));
