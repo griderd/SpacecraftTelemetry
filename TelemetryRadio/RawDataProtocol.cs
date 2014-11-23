@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace TelemetryRadio
 {
-    public class RawDataProtocol
+    class RawDataProtocol
     {
         DataProcessor data;
         StringBuilder result;

@@ -108,7 +108,17 @@ namespace TelemetryRadio
                 vesselName = VesselName,
                 partResources = this.partResources,
                 totalResources = new List<ResourceInfo>(this.totalResources.Values.ToArray()),
-                universalTime = UniversalTime
+                universalTime = UniversalTime,
+                apoapsis = Apoapsis,
+                periapsis = Periapsis,
+                timeToApoapsis = TimeToApoapsis,
+                timeToPeriapsis = TimeToPeriapsis,
+                longitudeOfAscendingNode = LongitudeOfAscendingNode,
+                inclination = Inclination,
+                eccentricity = Eccentricity,
+                meanAnomaly = MeanAnomaly,
+                period = Period,
+                trueAnomaly = TrueAnomaly
             };
         }
 
@@ -375,6 +385,31 @@ namespace TelemetryRadio
         #endregion
 
         #region Vessel Vectors
+
+        public double AccelerationX
+        {
+            get
+            {
+                return Format(vessel.acceleration.x);
+            }
+        }
+
+        public double AccelerationY
+        {
+            get
+            {
+                return Format(vessel.acceleration.y);
+            }
+        }
+
+        public double AccelerationZ
+        {
+            get
+            {
+                return Format(vessel.acceleration.z);
+            }
+        }
+
         public double Acceleration
         {
             get
@@ -391,6 +426,54 @@ namespace TelemetryRadio
             }
         }
 
+        public double AngularMomentumX
+        {
+            get
+            {
+                return Format(vessel.angularMomentum.x);
+            }
+        }
+
+        public double AngularMomentumY
+        {
+            get
+            {
+                return Format(vessel.angularMomentum.y);
+            }
+        }
+
+        public double AngularMomentumZ
+        {
+            get
+            {
+                return Format(vessel.angularMomentum.z);
+            }
+        }
+
+        public double AngularVelocityX
+        {
+            get
+            {
+                return Format(vessel.angularVelocity.x);
+            }
+        }
+
+        public double AngularVelocityY
+        {
+            get
+            {
+                return Format(vessel.angularVelocity.y);
+            }
+        }
+
+        public double AngularVelocityZ
+        {
+            get
+            {
+                return Format(vessel.angularVelocity.z);
+            }
+        }
+
         public double AngularVelocity
         {
             get
@@ -399,11 +482,59 @@ namespace TelemetryRadio
             }
         }
 
+        public double OrbitalVelocityX
+        {
+            get
+            {
+                return Format(vessel.obt_velocity.x);
+            }
+        }
+
+        public double OrbitalVelocityY
+        {
+            get
+            {
+                return Format(vessel.obt_velocity.y);
+            }
+        }
+
+        public double OrbitalVelocityZ
+        {
+            get
+            {
+                return Format(vessel.obt_velocity.z);
+            }
+        }
+
         public double OrbitalVelocity
         {
             get
             {
                 return Format(vessel.obt_velocity.magnitude);
+            }
+        }
+
+        public double SurfaceVelocityX
+        {
+            get
+            {
+                return Format(vessel.srf_velocity.x);
+            }
+        }
+
+        public double SurfaceVelocityY
+        {
+            get
+            {
+                return Format(vessel.srf_velocity.y);
+            }
+        }
+
+        public double SurfaceVelocityZ
+        {
+            get
+            {
+                return Format(vessel.srf_velocity.z);
             }
         }
 
@@ -455,6 +586,21 @@ namespace TelemetryRadio
         public double VerticalSpeed { get { return Format(vessel.verticalSpeed); } }
         public double TerrainAltitude { get { return Format(vessel.terrainAltitude); } }
         public string VesselName { get { return vessel.vesselName; } }
+
+        #endregion
+
+        #region Trajectory Data
+
+        public double Apoapsis { get { return Format(vessel.orbit.ApA); } }
+        public double Periapsis { get { return Format(vessel.orbit.PeA); } }
+        public double TimeToApoapsis { get { return Format(vessel.orbit.timeToAp); } }
+        public double TimeToPeriapsis { get { return Format(vessel.orbit.timeToPe); } }
+        public double LongitudeOfAscendingNode { get { return Format(vessel.orbit.LAN); } }
+        public double Inclination { get { return Format(vessel.orbit.inclination); } }
+        public double Eccentricity { get { return Format(vessel.orbit.eccentricity); } }
+        public double MeanAnomaly { get { return Format(vessel.orbit.meanAnomaly); } }
+        public double Period { get { return Format(vessel.orbit.period); } }
+        public double TrueAnomaly { get { return Format(vessel.orbit.trueAnomaly); } }
 
         #endregion
 

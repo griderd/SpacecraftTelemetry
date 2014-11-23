@@ -47,6 +47,7 @@
             this.btnNextPage.TabIndex = 12;
             this.btnNextPage.Text = "Next Page";
             this.btnNextPage.UseVisualStyleBackColor = true;
+            this.btnNextPage.Click += new System.EventHandler(this.btnNextPage_Click);
             // 
             // btnPreviousPage
             // 
@@ -56,6 +57,7 @@
             this.btnPreviousPage.TabIndex = 11;
             this.btnPreviousPage.Text = "Previous Page";
             this.btnPreviousPage.UseVisualStyleBackColor = true;
+            this.btnPreviousPage.Click += new System.EventHandler(this.btnPreviousPage_Click);
             // 
             // lstDocuments
             // 
@@ -64,6 +66,7 @@
             this.lstDocuments.Name = "lstDocuments";
             this.lstDocuments.Size = new System.Drawing.Size(211, 524);
             this.lstDocuments.TabIndex = 10;
+            this.lstDocuments.SelectedIndexChanged += new System.EventHandler(this.lstDocuments_SelectedIndexChanged);
             // 
             // frmFAO
             // 
@@ -74,6 +77,7 @@
             this.Controls.Add(this.lstDocuments);
             this.Name = "frmFAO";
             this.Text = "Flight Activities Officer";
+            this.Load += new System.EventHandler(this.frmFAO_Load);
             this.Controls.SetChildIndex(this.lblTerminal, 0);
             this.Controls.SetChildIndex(this.lstDocuments, 0);
             this.Controls.SetChildIndex(this.btnPreviousPage, 0);

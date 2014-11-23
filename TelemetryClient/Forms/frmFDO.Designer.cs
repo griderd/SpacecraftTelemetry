@@ -33,7 +33,7 @@
             // frmFDO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(636, 558);
+            this.ClientSize = new System.Drawing.Size(537, 573);
             this.Name = "frmFDO";
             this.Text = "Flight Dynamics Officer";
             this.ResumeLayout(false);

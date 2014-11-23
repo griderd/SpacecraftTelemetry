@@ -35,6 +35,8 @@ namespace TelemetryClient
         public static bool listening;
         public static bool tryToConnect;
 
+        public static Dictionary<string, string> documents;
+
         public static IPEndPoint ServerAddress { get; set; }
 
         static Thread t;
@@ -75,6 +77,7 @@ namespace TelemetryClient
         static void Main()
         {
             ServerAddress = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8080);
+            documents = new Dictionary<string, string>();
 
             stationsGo = new Dictionary<frmControlTerminal, CheckTristate>();
             listening = false;

@@ -43,6 +43,8 @@ namespace TelemetryServer
         public double acceleration, angularMomentum, angularVelocity, orbitalVelocity, surfaceVelocity;
         public double atmosphericDensity, geeForce, heightFromTerrain, missionTime, orbitSpeed,
             surfaceSpeed, staticPressure, verticalSpeed, terrainAltitude, altitude, universalTime;
+        public double apoapsis, periapsis, timeToApoapsis, timeToPeriapsis, longitudeOfAscendingNode,
+            inclination, eccentricity, meanAnomaly, period, trueAnomaly;
         public string vesselName;
         public int currentStage;
 

@@ -11,10 +11,11 @@ namespace TelemetryClient
 {
     public partial class frmProcedures : TelemetryClient.frmControlTerminal
     {
-        Dictionary<string, string> files;
         string currentFile = "";
         int page = 0;
         bool endOfFile = false;
+
+        int lineNumber = 0;
 
         enum ParseLocation
         {
@@ -26,8 +27,6 @@ namespace TelemetryClient
         public frmProcedures()
         {
             InitializeComponent();
-            files = new Dictionary<string, string>();
-            files.Add("configParseErrors", "");
         }
 
         protected override void UpdateScreen()
@@ -36,13 +35,20 @@ namespace TelemetryClient
 
             if (currentFile != "")
             {
-                terminal.Append(files[currentFile]);
+                terminal.Append(Program.documents[currentFile]);
             }
+        }
+
+        private void AddParseError(string message)
+        {
+            Program.documents["configParseErrors"] = Program.documents["configParseErrors"] + "Line " + lineNumber.ToString() + ": " + message + "\n";
         }
 
         private void btnLoadConfig_Click(object sender, EventArgs e)
         {
-            files["configParseErrors"] = "";
+            Program.documents.Clear();
+
+            Program.documents["configParseErrors"] = "";
             string name = "";
             string description = "";
             string directory = "";
@@ -58,7 +64,7 @@ namespace TelemetryClient
 
                 for (; ; )
                 {
-                    int lineNumber = 0;
+                    lineNumber = 0;
                     try
                     {
                         lineNumber++;
@@ -69,7 +75,7 @@ namespace TelemetryClient
                             string[] parts = line.Split('=');
                             if (parts.Length != 2)
                             {
-                                files["configParseErrors"] = files["configParseErrors"] + "Line " + lineNumber.ToString() + ": Must have key and value pair.\n";
+                                AddParseError("Must have key and value pair.");
                             }
                             string key = parts[0].Trim();
                             string value = parts[1].Trim();
@@ -91,7 +97,7 @@ namespace TelemetryClient
                                     }
                                     else
                                     {
-                                        files["configParseErrors"] = files["configParseErrors"] + "Line " + lineNumber.ToString() + ": 'name' key cannot be used in this location.\n";
+                                        AddParseError("'name' key cannot be used in this location.");
                                     }
                                     break;
 
@@ -106,7 +112,7 @@ namespace TelemetryClient
                                     }
                                     else
                                     {
-                                        files["configParseErrors"] = files["configParseErrors"] + "Line " + lineNumber.ToString() + ": 'description' key cannot be used in this location.\n";
+                                        AddParseError("'description' key cannot be used in this location.");
                                     }
                                     break;
 
@@ -121,15 +127,15 @@ namespace TelemetryClient
                                     }
                                     else
                                     {
-                                        files["configParseErrors"] = files["configParseErrors"] + "Line " + lineNumber.ToString() + ": 'directory' key cannot be used in this location.\n";
+                                        AddParseError("'directory' key cannot be used in this location.");
                                     }
                                     break;
 
                                 case "fuels":
                                     if (location == ParseLocation.InStage)
-                                        fuels = value;  
+                                        fuels = value;
                                     else
-                                        files["configParseErrors"] = files["configParseErrors"] + "Line " + lineNumber.ToString() + ": 'fuels' key cannot be used in this location.\n";
+                                        AddParseError("'fuels' key cannot be used in this location.");
                                     break;
                             }
                         }
@@ -138,21 +144,21 @@ namespace TelemetryClient
                             if (location == ParseLocation.Root)
                                 Program.cfg.AddEmptyStage();
                             else
-                                files["configParseErrors"] = files["configParseErrors"] + "Line " + lineNumber.ToString() + ": 'emptystage' can only be used in root.\n";
+                                AddParseError("'emptystage' can only be used in root.");
                         }
                         else if (line == "stage")
                         {
                             if (location == ParseLocation.Root)
                                 location = ParseLocation.PreStage;
                             else
-                                files["configParseErrors"] = files["configParseErrors"] + "Line " + lineNumber.ToString() + ": 'stage' structure can only be used in root.\n";
+                                AddParseError("'stage' structure can only be used in root.");
                         }
                         else if (line == "{")
                         {
                             if (location == ParseLocation.PreStage)
                                 location = ParseLocation.InStage;
                             else
-                                files["configParseErrors"] = files["configParseErrors"] + "Line " + lineNumber.ToString() + ": '{' cannot be used in this location.\n";
+                                AddParseError("'{' cannot be used in this location.");
                         }
                         else if (line == "}")
                         {
@@ -166,7 +172,7 @@ namespace TelemetryClient
                             }
                             else
                             {
-                                files["configParseErrors"] = files["configParseErrors"] + "Line " + lineNumber.ToString() + ": '}' cannot be used in this location.\n";
+                                AddParseError("'}' cannot be used in this location.");
                             }
                         }
                     }
@@ -180,11 +186,11 @@ namespace TelemetryClient
             FileInfo[] fileList = Program.cfg.DocumentDirectory.GetFiles();
             foreach (FileInfo file in fileList)
             {
-                files.Add(file.Name, File.ReadAllText(file.FullName));
+                Program.documents.Add(file.Name, File.ReadAllText(file.FullName));
             }
 
             lstDocuments.Items.Clear();
-            foreach (string filename in files.Keys)
+            foreach (string filename in Program.documents.Keys)
             {
                 lstDocuments.Items.Add(filename);
             }
