@@ -8,32 +8,65 @@ namespace InertialMeasurementUnit
 {
     public class IMUModule : PartModule 
     {
-        Vector3d position;
-        Vector3d velocity;
+        Vector3d positionVector;
+        Vector3d velocityVector;
+        Vector3d accelerationVector;
 
         Vector3d orbitalMomenum;
         Vector3d eccentricityVector;
         Vector3d nodeVector;
 
         double eccentricAnomaly;
-
         double trueAnomalyRad;
         double inclinationRad;
-        double eccentricity;
-        double semiMajorAxis;
         double argumentOfPeriapsisRad;
-        double longitudeOfAscendingNodeRad; 
         double meanAnomalyRad;
-        double apoapsis;
-        double periapsis;
-        double velocityAtApoapsis;
-        double velocityAtPeriapsis;
+        double longitudeOfAscendingNodeRad;
 
-        public double TrueAnomaly { get { return trueAnomalyRad * (180 / Math.PI); } }
-        public double Inclination { get { return inclinationRad * (180 / Math.PI); } }
-        public double ArgumentOfPeriapsis { get { return argumentOfPeriapsisRad * (180 / Math.PI); } }
-        public double LongitudeOfAscendingNode { get { return longitudeOfAscendingNodeRad * (180 / Math.PI); } }
-        public double MeanAnomaly { get { return meanAnomalyRad * (180 / Math.PI); } }
+        [KSPField(guiActive = true, guiFormat = "F3", guiUnits = "m/s", guiName = "Velocity")]
+        public double velocity;
+
+        [KSPField(guiActive = true, guiFormat = "F3", guiUnits = "m/s^2", guiName = "Acceleration")]
+        public double acceleration;
+
+        [KSPField(guiActive=true, guiFormat="F3", guiUnits="deg", guiName="True Anomaly")]
+        public double trueAnomaly;
+
+        [KSPField(guiActive = true, guiFormat = "F3", guiUnits = "deg", guiName = "Inclination")]
+        public double inclination;
+
+        [KSPField(guiActive = true, guiFormat = "F3", guiName = "Eccentricity")]
+        public double eccentricity;
+
+        [KSPField(guiActive = true, guiFormat = "F3", guiUnits = "m", guiName = "Semimajor Axis")]
+        public double semiMajorAxis;
+
+        [KSPField(guiActive = true, guiFormat = "F3", guiUnits = "deg", guiName = "True Anomaly")]
+        public double argumentOfPeriapsis;
+
+        [KSPField(guiActive = true, guiFormat = "F3", guiUnits = "deg", guiName = "Long of Asc Node")]
+        public double longitudeOfAscendingNode;
+
+        [KSPField(guiActive = true, guiFormat = "F3", guiUnits = "deg", guiName = "Mean Anomaly")]
+        public double meanAnomaly;
+
+        [KSPField(guiActive = true, guiFormat = "F3", guiUnits = "m", guiName = "Apoapsis")]
+        public double apoapsis;
+
+        [KSPField(guiActive = true, guiFormat = "F3", guiUnits = "m", guiName = "Periapsis")]
+        public double periapsis;
+
+        [KSPField(guiActive = true, guiFormat = "F3", guiUnits = "m/s", guiName = "Velocity at Apoapsis")]
+        public double velocityAtApoapsis;
+
+        [KSPField(guiActive = true, guiFormat = "F3", guiUnits = "m/s", guiName = "Velocity at Periapsis")]
+        public double velocityAtPeriapsis;
+
+        public double TrueAnomaly { get { return trueAnomaly; } }
+        public double Inclination { get { return inclination; } }
+        public double ArgumentOfPeriapsis { get { return argumentOfPeriapsis; } }
+        public double LongitudeOfAscendingNode { get { return longitudeOfAscendingNode; } }
+        public double MeanAnomaly { get { return meanAnomalyRad; } }
         public double Eccentricity { get { return eccentricity; } }
         public double SemimajorAxis { get { return semiMajorAxis; } }
         public double Apoapsis { get { return apoapsis; } }
@@ -41,46 +74,54 @@ namespace InertialMeasurementUnit
         public double VelocityAtApoapsis { get { return velocityAtApoapsis; } }
         public double VelocityAtPeriapsis { get { return velocityAtPeriapsis; } }
 
-        [KSPField(isPersistant=true, guiActiveEditor=true, guiActive=false, guiFormat="G", guiName="IMU Sensitivity")]
+        [KSPField(guiActiveEditor = true, guiActive = true, guiFormat = "G", guiName = "IMU Sensitivity")]
         [UI_FieldFloatRange(controlEnabled=true, maxValue="10", minValue="0", scene=UI_Scene.Editor)]
         public int accelerometerSensitivity;
 
-        bool run;
+        [KSPField(guiActive = true, guiFormat = "g", guiName="Active")]
+        public bool run;
+
+        bool started;
 
         public override void OnLoad(ConfigNode node)
         {
             base.OnLoad(node);
 
-            velocity = new Vector3d(double.Parse(node.GetValue("velocityX")),
-                                    double.Parse(node.GetValue("velocityY")),
-                                    double.Parse(node.GetValue("velocityZ")));
+            if (node != null)
+            {
+                accelerometerSensitivity = node.GetValue("sensitivity") != null ? int.Parse(node.GetValue("sensitivity")) : 2;
+                velocityVector = new Vector3d(node.GetValue("velocityX") != null ? double.Parse(node.GetValue("velocityX")) : 0,
+                                              node.GetValue("velocityY") != null ? double.Parse(node.GetValue("velocityY")) : 0,
+                                              node.GetValue("velocityZ") != null ? double.Parse(node.GetValue("velocityZ")) : 0);
 
-            position = new Vector3d(double.Parse(node.GetValue("positionX")),
-                                    double.Parse(node.GetValue("positionY")),
-                                    double.Parse(node.GetValue("positionZ")));
+                positionVector = new Vector3d(node.GetValue("positionX") != null ? double.Parse(node.GetValue("positionX")) : 0,
+                                              node.GetValue("positionY") != null ? double.Parse(node.GetValue("positionY")) : 0,
+                                              node.GetValue("positionZ") != null ? double.Parse(node.GetValue("positionZ")) : 0);
+            }
         }
 
         public override void OnSave(ConfigNode node)
         {
             base.OnSave(node);
 
-            node.AddValue("velocityX", velocity.x.ToString());
-            node.AddValue("velocityY", velocity.y.ToString());
-            node.AddValue("velocityZ", velocity.z.ToString());
+            node.AddValue("sensitivity", accelerometerSensitivity.ToString());
 
-            node.AddValue("positionX", position.x.ToString());
-            node.AddValue("positionY", position.y.ToString());
-            node.AddValue("positionZ", position.z.ToString());
+            node.AddValue("velocityX", velocityVector.x.ToString());
+            node.AddValue("velocityY", velocityVector.y.ToString());
+            node.AddValue("velocityZ", velocityVector.z.ToString());
+
+            node.AddValue("positionX", positionVector.x.ToString());
+            node.AddValue("positionY", positionVector.y.ToString());
+            node.AddValue("positionZ", positionVector.z.ToString());
         }
 
         public override void OnStart(StartState state)
         {
             base.OnStart(state);
+            started = false;
 
             if ((state != StartState.Editor) & (state != StartState.None))
             {
-                position = vessel.GetWorldPos3D();
-                velocity = vessel.obt_velocity;
                 run = true;
             }
             else
@@ -91,35 +132,44 @@ namespace InertialMeasurementUnit
 
         public override void OnFixedUpdate()
         {
-            base.OnFixedUpdate();
 
-            if (run)
-            {
-                Vector3d acceleration = new Vector3d(Math.Round(vessel.acceleration.x, accelerometerSensitivity),
-                                                     Math.Round(vessel.acceleration.y, accelerometerSensitivity),
-                                                     Math.Round(vessel.acceleration.z, accelerometerSensitivity));
-                velocity = velocity + (acceleration * UnityEngine.Time.fixedDeltaTime);
-                position = position + (velocity * UnityEngine.Time.fixedDeltaTime);
-            }
         }
 
         public override void OnUpdate()
         {
             base.OnUpdate();
 
+            if (vessel.obt_velocity.magnitude == 0)
+            {
+                started = false;
+                return;
+            }
+            else
+            {
+                started = true;
+                positionVector = vessel.GetWorldPos3D();
+                velocityVector = vessel.obt_velocity;
+            }
+
             if (run)
             {
-                orbitalMomenum = Vector3d.Cross(velocity, position);
-                eccentricityVector = (Vector3d.Cross(velocity, orbitalMomenum) / vessel.mainBody.gravParameter) - (position / position.magnitude);
+                accelerationVector = new Vector3d(Math.Round(vessel.acceleration.x, accelerometerSensitivity),
+                                                     Math.Round(vessel.acceleration.y, accelerometerSensitivity),
+                                                     Math.Round(vessel.acceleration.z, accelerometerSensitivity));
+                velocityVector = velocityVector + (accelerationVector * UnityEngine.Time.deltaTime);
+                positionVector = positionVector + (velocityVector * UnityEngine.Time.deltaTime);
+
+                orbitalMomenum = Vector3d.Cross(velocityVector, positionVector);
+                eccentricityVector = (Vector3d.Cross(velocityVector, orbitalMomenum) / vessel.mainBody.gravParameter) - (positionVector / positionVector.magnitude);
                 nodeVector = new Vector3d(-orbitalMomenum.y, orbitalMomenum.x, 0);
 
-                if (Vector3d.Dot(position, velocity) >= 0.0)
+                if (Vector3d.Dot(positionVector, velocityVector) >= 0.0)
                 {
-                    trueAnomalyRad = Math.Acos(Vector3d.Dot(eccentricityVector, position) / (eccentricityVector.magnitude * position.magnitude));
+                    trueAnomalyRad = Math.Acos(Vector3d.Dot(eccentricityVector, positionVector) / (eccentricityVector.magnitude * positionVector.magnitude));
                 }
                 else
                 {
-                    trueAnomalyRad = (2.0 * Math.PI) - Math.Acos(Vector3d.Dot(eccentricityVector, position) / (eccentricityVector.magnitude * position.magnitude));
+                    trueAnomalyRad = (2.0 * Math.PI) - Math.Acos(Vector3d.Dot(eccentricityVector, positionVector) / (eccentricityVector.magnitude * positionVector.magnitude));
                 }
 
                 inclinationRad = Math.Acos(orbitalMomenum.z / orbitalMomenum.magnitude);
@@ -145,12 +195,21 @@ namespace InertialMeasurementUnit
                 }
 
                 meanAnomalyRad = eccentricAnomaly - (eccentricity * Math.Sin(eccentricAnomaly));
-                semiMajorAxis = 1 / ((2 / position.magnitude) - (Math.Pow(velocity.magnitude, 2.0) / vessel.mainBody.gravParameter));
+                semiMajorAxis = 1 / ((2 / positionVector.magnitude) - (Math.Pow(velocityVector.magnitude, 2.0) / vessel.mainBody.gravParameter));
 
-                apoapsis = semiMajorAxis * (1 + eccentricity) - vessel.mainBody.Radius;
-                periapsis = semiMajorAxis * (1 - eccentricity) - vessel.mainBody.Radius;
-                velocityAtApoapsis = Math.Sqrt(((1 + eccentricity) * vessel.mainBody.gravParameter) / periapsis);
-                velocityAtPeriapsis = Math.Sqrt(((1 - eccentricity) * vessel.mainBody.gravParameter) / apoapsis);
+                apoapsis = semiMajorAxis * (1 + eccentricity);
+                periapsis = semiMajorAxis * (1 - eccentricity);
+                velocityAtApoapsis = Math.Sqrt(((1 + eccentricity) * vessel.mainBody.gravParameter) / apoapsis);
+                velocityAtPeriapsis = Math.Sqrt(((1 - eccentricity) * vessel.mainBody.gravParameter) / periapsis);
+
+                argumentOfPeriapsis = argumentOfPeriapsisRad * (180 / Math.PI);
+                longitudeOfAscendingNode = longitudeOfAscendingNodeRad * (180 / Math.PI);
+                trueAnomaly = trueAnomalyRad * (180 / Math.PI);
+                inclination = inclinationRad * (180 / Math.PI);
+                meanAnomaly = meanAnomalyRad * (180 / Math.PI);
+
+                velocity = velocityVector.magnitude;
+                acceleration = vessel.acceleration.magnitude;
             }
         }
     }
