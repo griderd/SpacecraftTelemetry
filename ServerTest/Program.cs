@@ -16,7 +16,7 @@ namespace TelemetryServer
         static void Main(string[] args)
         {
             server = new Server(IPAddress.Parse("127.0.0.1"), 8080);
-            server.ClientConnected += new EventHandler<ClientConnectEventArgs>(server_ClientConnected);
+            Server.ClientConnected += new EventHandler<ClientConnectEventArgs>(server_ClientConnected);
             Console.WriteLine("Server listening on " + server.ServerEndpoint.ToString());
             
             //server.EndListening();

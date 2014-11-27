@@ -29,11 +29,8 @@ namespace TelemetryClient
 
         public static TelemetryData data;
         public static Dictionary<frmControlTerminal, CheckTristate> stationsGo;
-        static TcpClient client;
 
-        public static bool Connected { get { return client.Connected; } }
-        public static bool listening;
-        public static bool tryToConnect;
+        public static Client client;
 
         public static Dictionary<string, string> documents;
 
@@ -77,14 +74,12 @@ namespace TelemetryClient
         static void Main()
         {
             ServerAddress = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8080);
+            client = new Client(ServerAddress);
+            client.DataAvailable += new EventHandler<DataAvailableEventArgs>(client_DataAvailable);
+
             documents = new Dictionary<string, string>();
 
             stationsGo = new Dictionary<frmControlTerminal, CheckTristate>();
-            listening = false;
-            tryToConnect = false;
-
-            t = new Thread(new ThreadStart(CollectData));
-            t.Start();
 
             countdownTime = 0;
 
@@ -157,94 +152,24 @@ namespace TelemetryClient
 
         public static void BeginCollectData()
         {
-            t = new Thread(new ThreadStart(CollectData));
-            t.Start();
+            client.StartConnecting();
         }
 
         public static void EndCollectData()
         {
-            listening = false;
-            tryToConnect = false;
+            client.Disconnect();
         }
 
-        static void CollectData()
+        public static void client_DataAvailable(object sender, DataAvailableEventArgs e)
         {
-            Trace.WriteLine("Beginning data collection.");
-            tryToConnect = true;
-            while (tryToConnect)
+            if (e.Data.Protocol == Protocols.TelemetryData)
             {
-                Trace.WriteLine("Waiting to connect to " + ServerAddress.ToString());
-                while (!Connect() & tryToConnect) { }
-                tryToConnect = false;
-                if (client.Connected) ListenForData();
+                data = (TelemetryData)e.Data.GetData();
             }
-        }
-
-        static bool Connect()
-        {
-            client = new TcpClient();
-
-            try
+            else
             {
-                client.Connect(ServerAddress);
+                // TODO: Warn that the protocol is incorrect.
             }
-            catch
-            {
-                return false;
-            }
-
-
-            while (!client.Connected & tryToConnect) { }
-            //Trace.WriteLine("Connected");
-
-            //Trace.WriteLine("Client listening on: " + client.Client.LocalEndPoint.ToString());
-            return true;
-        }
-
-        static void ListenForData()
-        {
-            Trace.WriteLine("Reading data.");
-            Stream clientStream = client.GetStream();
-            BinaryReader reader = new BinaryReader(clientStream);
-
-            Queue<byte> rawData = new Queue<byte>();
-            int length = 0;
-            byte[] magicNumber = new byte[] { 0x62, 0x65, 0x67, 0x69, 0x6E };
-
-            reader = new BinaryReader(clientStream);
-
-            listening = true;
-
-            Action<int> enqueueByte = new Action<int>(x => { while (rawData.Count < x) rawData.Enqueue(reader.ReadByte()); });
-
-            while (client.Connected & listening)
-            {
-                try
-                {
-                    enqueueByte(magicNumber.Length);
-                    while (Helpers.CompareArrays<byte>(rawData.ToArray(), magicNumber) != 0)
-                    {
-                        rawData.Dequeue();
-                        enqueueByte(magicNumber.Length);
-                    }
-                    rawData.Clear();
-                    enqueueByte(4);
-                    length = BitConverter.ToInt32(rawData.ToArray(), 0);
-                    rawData.Clear();
-                    enqueueByte(length);
-                    Trace.WriteLine("Reading " + length.ToString() + " bytes.");
-                    data = TelemetryData.Deserialize(rawData.ToArray());
-                    rawData.Clear();
-                }
-                catch
-                {
-                    break;
-                }
-            }
-
-            listening = false;
-            client.GetStream().Close();
-            client.Close();
         }
     }
 }

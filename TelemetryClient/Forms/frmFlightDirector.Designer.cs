@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnReset = new System.Windows.Forms.Button();
             this.lblNetwork = new System.Windows.Forms.Label();
@@ -49,6 +50,7 @@
             this.btnCountdownHold = new System.Windows.Forms.Button();
             this.btnCountdownStart = new System.Windows.Forms.Button();
             this.nudTime = new System.Windows.Forms.NumericUpDown();
+            this.tmrCountdown = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTime)).BeginInit();
@@ -92,6 +94,7 @@
             this.btnReset.TabIndex = 35;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click_1);
             // 
             // lblNetwork
             // 
@@ -310,6 +313,11 @@
             0,
             0});
             // 
+            // tmrCountdown
+            // 
+            this.tmrCountdown.Interval = 1000;
+            this.tmrCountdown.Tick += new System.EventHandler(this.tmrCountdown_Tick);
+            // 
             // frmFlightDirector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -352,6 +360,7 @@
         private System.Windows.Forms.NumericUpDown nudTime;
         private System.Windows.Forms.Button btnCountdownHold;
         private System.Windows.Forms.Button btnCountdownReset;
+        private System.Windows.Forms.Timer tmrCountdown;
 
 
     }

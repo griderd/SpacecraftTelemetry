@@ -186,7 +186,14 @@ namespace TelemetryClient
             FileInfo[] fileList = Program.cfg.DocumentDirectory.GetFiles();
             foreach (FileInfo file in fileList)
             {
-                Program.documents.Add(file.Name, File.ReadAllText(file.FullName));
+                try
+                {
+                    Program.documents.Add(file.Name, File.ReadAllText(file.FullName));
+                }
+                catch
+                {
+                    // Do nothing for now
+                }
             }
 
             lstDocuments.Items.Clear();

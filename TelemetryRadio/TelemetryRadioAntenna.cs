@@ -10,7 +10,9 @@ namespace TelemetryRadio
 {
     public class TelemetryRadioAntenna : PartModule
     {
-        Server telemetryServer;
+        public Transmitter transmitter;
+
+        internal Server telemetryServer;
         double lastTime;
         bool collectingData = false;
 
@@ -41,6 +43,8 @@ namespace TelemetryRadio
 
             LinkupToFlightEvents();
 
+            transmitter = new Transmitter(this);
+
             lastTime = Time.timeSinceLevelLoad;
 
             TelemetryRadioLogger.Print("Initializing server at " + ipAddress + ":" + port.ToString());
@@ -55,7 +59,7 @@ namespace TelemetryRadio
             }
             TelemetryRadioLogger.Print("Server initialized. Finishing setup.");
 
-            telemetryServer.ClientConnected += new EventHandler<ClientConnectEventArgs>(telemetryServer_ClientConnected);
+            Server.ClientConnected += new EventHandler<ClientConnectEventArgs>(telemetryServer_ClientConnected);        
             processor = new DataProcessor(vessel, telemetryServer);
         }
 
@@ -70,7 +74,6 @@ namespace TelemetryRadio
         {
             base.OnUpdate();
 
-            bool hasConnection = RemoteTechCompatibility.HasConnection(vessel);
             if (collectingData)
                 TelemetryRadioLogger.Print("Still collecting data...");
             else if (!(lastTime + 0.25 <= Time.timeSinceLevelLoad))
@@ -78,7 +81,7 @@ namespace TelemetryRadio
             else
                 TelemetryRadioLogger.Print("Trying to start data collection.");
 
-            if ((lastTime + 0.25 <= Time.timeSinceLevelLoad) && (!collectingData) && (hasConnection))
+            if ((lastTime + 0.25 <= Time.timeSinceLevelLoad) && (!collectingData))
             {
                 collectingData = true;
 #if DEBUG
@@ -88,16 +91,8 @@ namespace TelemetryRadio
                 processor.Update();
 
                 TelemetryRadioLogger.Print("Sending data...");
-                int length = 0;
-                try
-                {
-                    length = telemetryServer.Send(processor.GetTelemetryData());
-                }
-                catch (Exception ex)
-                {
-                    TelemetryRadioLogger.Print(ex.Message + " " + ex.StackTrace);
-                }
-                TelemetryRadioLogger.Print(length.ToString() + " bytes sent.");
+                transmitter.Enqueue(processor.GetTelemetryData());
+                transmitter.SendNext();
 
                 lastTime = Time.timeSinceLevelLoad;
                 collectingData = false;

@@ -29,7 +29,7 @@ namespace TelemetryServer
         List<Socket> clients;
         Thread listenerThread;
 
-        public event EventHandler<ClientConnectEventArgs> ClientConnected;
+        public static event EventHandler<ClientConnectEventArgs> ClientConnected;
 
         public IPEndPoint ServerEndpoint
         {
@@ -124,29 +124,21 @@ namespace TelemetryServer
             clients.Clear();
         }
 
+        public int Send(DataBlock data)
+        {
+            return Send(data.ToBytes());
+        }
+
         public int Send(TelemetryData data)
         {
-            using (MemoryStream stream = new MemoryStream())
+            try
             {
-                byte[] rawData;
-                BinaryFormatter formatter = new BinaryFormatter();
-                formatter.Serialize(stream, data);
-                rawData = stream.ToArray();
-
-                int sentData = 0;
-
-                try
-                {
-                    sentData = Send(new byte[] { 0x62, 0x65, 0x67, 0x69, 0x6E }); // Send magic number "begin"
-                    sentData += Send(BitConverter.GetBytes(rawData.Length));
-                    sentData += Send(rawData);
-                }
-                catch
-                {
-                    throw;
-                }
-
-                return sentData;
+                DataBlock block = new DataBlock(Protocols.TelemetryData, TelemetryData.Serialize(data));
+                return Send(block.ToBytes());
+            }
+            catch
+            {
+                throw;
             }
         }
 
@@ -156,7 +148,8 @@ namespace TelemetryServer
 
             try
             {
-                return Send(rawData);
+                DataBlock block = new DataBlock(Protocols.String, rawData);
+                return Send(block.ToBytes());
             }
             catch
             {

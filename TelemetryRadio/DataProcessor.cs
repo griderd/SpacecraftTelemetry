@@ -591,16 +591,16 @@ namespace TelemetryRadio
 
         #region Trajectory Data
 
-        public double Apoapsis { get { return Format(vessel.orbit.ApA); } }
-        public double Periapsis { get { return Format(vessel.orbit.PeA); } }
-        public double TimeToApoapsis { get { return Format(vessel.orbit.timeToAp); } }
-        public double TimeToPeriapsis { get { return Format(vessel.orbit.timeToPe); } }
-        public double LongitudeOfAscendingNode { get { return Format(vessel.orbit.LAN); } }
-        public double Inclination { get { return Format(vessel.orbit.inclination); } }
-        public double Eccentricity { get { return Format(vessel.orbit.eccentricity); } }
-        public double MeanAnomaly { get { return Format(vessel.orbit.meanAnomaly); } }
-        public double Period { get { return Format(vessel.orbit.period); } }
-        public double TrueAnomaly { get { return Format(vessel.orbit.trueAnomaly); } }
+        public double Apoapsis { get { return Format(vessel.GetOrbit().ApA); } }
+        public double Periapsis { get { return Format(vessel.GetOrbit().PeA); } }
+        public double TimeToApoapsis { get { return Format(vessel.GetOrbit().timeToAp); } }
+        public double TimeToPeriapsis { get { return Format(vessel.GetOrbit().timeToPe); } }
+        public double LongitudeOfAscendingNode { get { return Format(vessel.GetOrbit().LAN); } }
+        public double Inclination { get { return Format(vessel.GetOrbit().inclination); } }
+        public double Eccentricity { get { return Format(vessel.GetOrbit().eccentricity); } }
+        public double MeanAnomaly { get { return Format(vessel.GetOrbit().meanAnomaly); } }
+        public double Period { get { return Format(vessel.GetOrbit().period); } }
+        public double TrueAnomaly { get { return Format(vessel.GetOrbit().trueAnomaly); } }
 
         #endregion
 

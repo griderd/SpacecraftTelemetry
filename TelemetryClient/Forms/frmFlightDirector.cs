@@ -21,7 +21,7 @@ namespace TelemetryClient
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            Program.ResetGoNoGo();
+            
         }
 
         protected override void UpdateScreen()
@@ -36,9 +36,6 @@ namespace TelemetryClient
             AppendToTerminal("Pitch", Program.data.pitch);
             AppendToTerminal("Roll", Program.data.roll);
             AppendToTerminal("Heading", Program.data.heading);
-
-            if ((Program.runCountdown) & (Program.countdownTime <= 0))
-                Program.countdownTime += 0.1;
         }
 
         void UpdateLights()
@@ -103,18 +100,35 @@ namespace TelemetryClient
         private void btnCountdownStart_Click(object sender, EventArgs e)
         {
             Program.runCountdown = true;
+            tmrCountdown.Enabled = true;
             Program.countdownTime = (double)nudTime.Value * -60;
         }
 
         private void btnCountdownHold_Click(object sender, EventArgs e)
         {
             if (Program.countdownTime < 0)
+            {
                 Program.runCountdown = !Program.runCountdown;
+                tmrCountdown.Enabled = Program.runCountdown;
+            }
         }
 
         private void btnCountdownReset_Click(object sender, EventArgs e)
         {
             Program.countdownTime = 1;
+        }
+
+        private void tmrCountdown_Tick(object sender, EventArgs e)
+        {
+            if ((Program.runCountdown) & (Program.countdownTime <= 0))
+                Program.countdownTime += 1;
+            else
+                tmrCountdown.Enabled = false;
+        }
+
+        private void btnReset_Click_1(object sender, EventArgs e)
+        {
+            Program.ResetGoNoGo();
         }
     }
 }

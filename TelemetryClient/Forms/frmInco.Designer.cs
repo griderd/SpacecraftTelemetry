@@ -28,19 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.chkRecord = new System.Windows.Forms.CheckBox();
+            this.dlgSave = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
+            // 
+            // lblTerminal
+            // 
+            this.lblTerminal.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            // 
+            // chkRecord
+            // 
+            this.chkRecord.Appearance = System.Windows.Forms.Appearance.Button;
+            this.chkRecord.Location = new System.Drawing.Point(12, 566);
+            this.chkRecord.Name = "chkRecord";
+            this.chkRecord.Size = new System.Drawing.Size(88, 36);
+            this.chkRecord.TabIndex = 6;
+            this.chkRecord.Text = "Record";
+            this.chkRecord.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.chkRecord.UseVisualStyleBackColor = true;
+            this.chkRecord.CheckedChanged += new System.EventHandler(this.chkRecord_CheckedChanged);
             // 
             // frmInco
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(636, 558);
+            this.ClientSize = new System.Drawing.Size(543, 611);
+            this.Controls.Add(this.chkRecord);
             this.Name = "frmInco";
             this.Text = "Instrumentation and Communications Officer";
+            this.Controls.SetChildIndex(this.lblTerminal, 0);
+            this.Controls.SetChildIndex(this.chkRecord, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.CheckBox chkRecord;
+        private System.Windows.Forms.SaveFileDialog dlgSave;
     }
 }

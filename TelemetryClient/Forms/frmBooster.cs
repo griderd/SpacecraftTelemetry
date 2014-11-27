@@ -43,6 +43,9 @@ namespace TelemetryClient
             AppendToTerminal("Orbital Velocity", Program.data.orbitalVelocity);
             AppendToTerminal("ΔV", deltaVelocity);
             AppendToTerminal("Altitude", Program.data.altitude);
+            AppendToTerminal("Vertical Speed", Program.data.verticalSpeed);
+            AppendToTerminal("Surface Speed", Program.data.surfaceSpeed);
+            AppendToTerminal("Angle to Surface", Math.Atan2(Program.data.verticalSpeed, Program.data.surfaceSpeed) * (180 / Math.PI));
 
             if (Program.cfg != null)
             {

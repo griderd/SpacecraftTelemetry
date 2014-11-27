@@ -26,7 +26,7 @@ namespace TelemetryClient
         {
             base.UpdateScreen();
 
-            if (Program.tryToConnect)
+            if (Program.client.AwaitingConnection)
             {
                 btnConnect.Enabled = false;
                 btnCancel.Enabled = true;
@@ -43,9 +43,9 @@ namespace TelemetryClient
             }
             else
             {
-                AppendToTerminal("Awaiting Connection", Program.tryToConnect.ToString());
-                AppendToTerminal("Connected To Server", Program.Connected.ToString());
-                AppendToTerminal("Listening For Data", Program.listening.ToString());
+                AppendToTerminal("Awaiting Connection", Program.client.AwaitingConnection.ToString());
+                AppendToTerminal("Connected To Server", Program.client.HasConnection.ToString());
+                AppendToTerminal("Listening For Data", Program.client.Listening.ToString());
                 AppendToTerminal("Spacecraft Server", Program.data.serverEndpoint);
                 if (Program.data.clientEndpoints != null)
                 {
@@ -59,7 +59,7 @@ namespace TelemetryClient
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            if (!Program.Connected)
+            if (!Program.client.HasConnection)
             {
                 int port;
                 System.Net.IPAddress address;
@@ -81,7 +81,7 @@ namespace TelemetryClient
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            Program.tryToConnect = false;
+            Program.client.StopConnecting();
         }
     }
 }
