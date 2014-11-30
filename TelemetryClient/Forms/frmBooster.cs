@@ -15,6 +15,7 @@ namespace TelemetryClient
         public frmBooster()
         {
             InitializeComponent();
+
         }
 
         protected override void UpdateScreen()
@@ -59,6 +60,8 @@ namespace TelemetryClient
         private void frmBooster_Load(object sender, EventArgs e)
         {
             initialVelocity = 0;
+            Callsign = "BOOSTER";
+            Nickname = "BOOSTER";
         }
 
         private void btnAbort_Click(object sender, EventArgs e)
@@ -71,6 +74,11 @@ namespace TelemetryClient
         private void btnResetDeltaV_Click(object sender, EventArgs e)
         {
             initialVelocity = Program.data.orbitalVelocity;
+        }
+
+        private void btnGo_Load(object sender, EventArgs e)
+        {
+
         }
 
     }

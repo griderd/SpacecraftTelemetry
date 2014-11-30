@@ -13,6 +13,8 @@ namespace TelemetryClient
         public frmFDO()
         {
             InitializeComponent();
+            Callsign = "FDO";
+            Nickname = "FIDO";
         }
 
         protected override void UpdateScreen()

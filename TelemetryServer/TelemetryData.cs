@@ -85,14 +85,15 @@ namespace TelemetryServer
         public string crewName;
         public double whee;
         public double panic;
+        public int seatID;
 
-        public CrewInfo(string name, double whee, double panic)
+        public CrewInfo(string name, double whee, double panic, int seatID)
             : this()
         {
             crewName = name;
             this.whee = whee;
             this.panic = panic;
-
+            this.seatID = seatID;
         }
     }
 

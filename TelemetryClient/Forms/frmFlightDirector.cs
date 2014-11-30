@@ -13,6 +13,8 @@ namespace TelemetryClient
         public frmFlightDirector()
         {
             InitializeComponent();
+            Callsign = "FLIGHT";
+            Nickname = "FLIGHT";
         }
 
         private void tmrUpdate_Tick(object sender, EventArgs e)
@@ -99,6 +101,8 @@ namespace TelemetryClient
 
         private void btnCountdownStart_Click(object sender, EventArgs e)
         {
+            RaiseFlightEvent("Beginning " + nudTime.Value.ToString() + " countdown.");
+
             Program.runCountdown = true;
             tmrCountdown.Enabled = true;
             Program.countdownTime = (double)nudTime.Value * -60;
@@ -110,6 +114,11 @@ namespace TelemetryClient
             {
                 Program.runCountdown = !Program.runCountdown;
                 tmrCountdown.Enabled = Program.runCountdown;
+
+                if (Program.runCountdown)
+                    RaiseFlightEvent("Countdown resumed.");
+                else
+                    RaiseFlightEvent("Countdown on hold.");
             }
         }
 

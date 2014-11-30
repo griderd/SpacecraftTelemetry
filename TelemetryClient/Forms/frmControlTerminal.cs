@@ -13,6 +13,14 @@ namespace TelemetryClient
     {
         protected StringBuilder terminal;
 
+        protected string Callsign { get; set; }
+        protected string Nickname { get; set; }
+
+        protected void RaiseFlightEvent(string message)
+        {
+            Program.FlightEvent(this, new FlightEventArgs(Callsign, message));
+        }
+
         public frmControlTerminal()
         {
             InitializeComponent();
@@ -39,12 +47,30 @@ namespace TelemetryClient
 
         private void btnNoGo_Click(object sender, EventArgs e)
         {
+            if (Callsign != "FLIGHT")
+            {
+                Program.FlightEvent(this, new FlightEventArgs("FLIGHT", Nickname));
+                RaiseFlightEvent("No-go.");
+            }
+            else
+            {
+                RaiseFlightEvent("We are no-go.");
+            }
             Program.SetGo(this, CheckTristate.NoGo);
             btnGo.Enabled = false;
         }
 
         private void btnGo_Click(object sender, EventArgs e)
         {
+            if (Callsign != "FLIGHT")
+            {
+                Program.FlightEvent(this, new FlightEventArgs("FLIGHT", Nickname));
+                RaiseFlightEvent("Go!");
+            }
+            else
+            {
+                RaiseFlightEvent("We are go.");
+            }
             Program.SetGo(this, CheckTristate.Go);
             btnNoGo.Enabled = false;
         }

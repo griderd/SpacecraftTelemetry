@@ -33,7 +33,7 @@
             // frmGuido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(636, 558);
+            this.ClientSize = new System.Drawing.Size(538, 572);
             this.Name = "frmGuido";
             this.Text = "Guidance Officer";
             this.ResumeLayout(false);

@@ -10,6 +10,7 @@ using TelemetryServer;
 using System.IO;
 using GSLib.Collections;
 using System.Diagnostics;
+using TelemetryClient.Forms;
 
 namespace TelemetryClient
 {
@@ -22,6 +23,8 @@ namespace TelemetryClient
 
     static class Program
     {
+        public static EventHandler<FlightEventArgs> FlightEvent;
+
         public static CraftConfig cfg = null;
         
         public static double countdownTime;
@@ -54,6 +57,7 @@ namespace TelemetryClient
         public static frmProcedures procedures;
         public static frmFAO fao;
         public static frmNetwork network;
+        public static frmPAO pao;
 
         public static ResourceInfo GetResourceInfo(string resourceName)
         {
@@ -88,7 +92,8 @@ namespace TelemetryClient
             InitializeForms();
             Application.Run(new frmMain());
 
-            t.Abort();
+            client.StopConnecting();
+            client.Disconnect();
             booster.Close();
             retro.Close();
             fdo.Close();
@@ -105,6 +110,7 @@ namespace TelemetryClient
             aflight.Close();
             fao.Close();
             network.Close();
+            pao.Close();
         }
 
         static void InitializeForms()
@@ -125,6 +131,7 @@ namespace TelemetryClient
             InitializeForm<frmFlightDirector>(ref flight);
             InitializeForm<frmFAO>(ref fao);
             InitializeForm<frmNetwork>(ref network);
+            InitializeForm<frmPAO>(ref pao);
         }
 
         static void InitializeForm<T>(ref T form) 
@@ -170,6 +177,17 @@ namespace TelemetryClient
             {
                 // TODO: Warn that the protocol is incorrect.
             }
+        }
+
+        public static string GetTime()
+        {
+            KerbalTimespan missionTime;
+            if (Program.countdownTime < 0)
+                missionTime = new KerbalTimespan(Program.countdownTime);
+            else
+                missionTime = new KerbalTimespan(Program.data.missionTime);
+
+            return missionTime.ToString();
         }
     }
 }

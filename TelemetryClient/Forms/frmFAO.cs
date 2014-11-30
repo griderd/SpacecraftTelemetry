@@ -18,6 +18,8 @@ namespace TelemetryClient
         public frmFAO()
         {
             InitializeComponent();
+            Callsign = "FAO";
+            Nickname = "FAO";
         }
 
         private void frmFAO_Load(object sender, EventArgs e)

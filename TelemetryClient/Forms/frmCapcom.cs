@@ -13,6 +13,8 @@ namespace TelemetryClient
         public frmCapcom()
         {
             InitializeComponent();
+            Callsign = "CC";
+            Nickname = "CAPCOM";
         }
     }
 }

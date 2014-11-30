@@ -101,6 +101,7 @@ namespace TelemetryServer
             Queue<byte> rawData = new Queue<byte>();
             int length = 0;
             byte[] magicNumber = new byte[] { 0x62, 0x65, 0x67, 0x69, 0x6E };
+            byte[] reserved;
 
             reader = new BinaryReader(clientStream);
 
@@ -121,6 +122,9 @@ namespace TelemetryServer
                     rawData.Clear();
                     enqueueByte(1);
                     protocol = (Protocols)rawData.Dequeue();
+                    enqueueByte(32);
+                    reserved = rawData.ToArray();
+                    rawData.Clear();
                     enqueueByte(4);
                     length = BitConverter.ToInt32(rawData.ToArray(), 0);
                     rawData.Clear();

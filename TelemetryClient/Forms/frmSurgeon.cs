@@ -14,6 +14,8 @@ namespace TelemetryClient
         public frmSurgeon()
         {
             InitializeComponent();
+            Callsign = "SURGEON";
+            Nickname = "SURGEON";
         }
 
         protected override void UpdateScreen()

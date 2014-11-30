@@ -13,6 +13,8 @@ namespace TelemetryClient
         public frmRetro()
         {
             InitializeComponent();
+            Callsign = "RETRO";
+            Nickname = "RETRO";
         }
     }
 }

@@ -13,6 +13,8 @@ namespace TelemetryClient
         public frmTelmu()
         {
             InitializeComponent();
+            Callsign = "TELMU";
+            Nickname = "TEMLU";
         }
     }
 }

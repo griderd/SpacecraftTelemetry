@@ -27,6 +27,8 @@ namespace TelemetryClient
         public frmProcedures()
         {
             InitializeComponent();
+            Callsign = "PROCEDURES";
+            Nickname = "PROCEDURES";
         }
 
         protected override void UpdateScreen()

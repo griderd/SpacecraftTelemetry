@@ -20,6 +20,8 @@ namespace TelemetryClient
             InitializeComponent();
 
             filename = "N/A";
+            Callsign = "INCO";
+            Nickname = "INCO";
         }
 
         private void chkRecord_CheckedChanged(object sender, EventArgs e)

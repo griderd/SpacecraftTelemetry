@@ -151,7 +151,7 @@ namespace TelemetryRadio
                 biomed[i] = crew[i].KerbalRef != null ? crew[i].KerbalRef.GetComponent<kerbalExpressionSystem>() : null;
                 if (crew[i].KerbalRef != null)
                 {
-                    crewData.Add(new CrewInfo(crew[i].KerbalRef.crewMemberName, biomed[i].wheeLevel, biomed[i].panicLevel));
+                    crewData.Add(new CrewInfo(crew[i].KerbalRef.crewMemberName, biomed[i].wheeLevel, biomed[i].panicLevel, crew[i].seatIdx));
                 }
             }
         }

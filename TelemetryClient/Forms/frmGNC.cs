@@ -13,6 +13,8 @@ namespace TelemetryClient
         public frmGNC()
         {
             InitializeComponent();
+            Callsign = "GNC";
+            Nickname = "GNC";
         }
     }
 }

@@ -20,6 +20,8 @@ namespace TelemetryClient
         private void frmNetwork_Load(object sender, EventArgs e)
         {
             errorMessage = "";
+            Callsign = "NETWORK";
+            Nickname = "NETWORK";
         }
 
         protected override void UpdateScreen()

@@ -116,7 +116,7 @@ namespace TelemetryClient
 
         private void btnPAO_Click(object sender, EventArgs e)
         {
-
+            Program.pao.Show();
         }
 
         private void btnDoD_Click(object sender, EventArgs e)

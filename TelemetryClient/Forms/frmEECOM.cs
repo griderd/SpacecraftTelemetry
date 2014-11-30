@@ -13,6 +13,8 @@ namespace TelemetryClient
         public frmEECOM()
         {
             InitializeComponent();
+            Callsign = "EECOM";
+            Nickname = "EECOM";
         }
 
         protected override void UpdateScreen()

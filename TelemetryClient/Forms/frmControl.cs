@@ -13,6 +13,8 @@ namespace TelemetryClient
         public frmControl()
         {
             InitializeComponent();
+            Callsign = "CONTROL";
+            Nickname = "CONTROL";
         }
     }
 }

@@ -13,6 +13,8 @@ namespace TelemetryClient
         public frmGuido()
         {
             InitializeComponent();
+            Callsign = "GUIDO";
+            Nickname = "GUIDANCE";
         }
     }
 }
